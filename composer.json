@@ -1,0 +1,24 @@
+{
+    "name": "katmore/healthsvc",
+    "description": "health webservice",
+    "homepage":"https://github.com/katmore/healthsvc",
+    "type": "project",
+    "license": [
+       "MIT",
+       "GPL-3.0+"
+    ],
+    "authors": [
+        {
+            "name": "Doug Bird",
+            "email": "retran@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { 
+            "Healthsvc\\": "src"
+         }
+    },
+    "require": {
+        "php" : ">=7.2.1"
+    }
+}

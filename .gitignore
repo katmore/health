@@ -1,0 +1,12 @@
+.*
+!/.gitignore
+*.log
+/vendor/*
+/poop/*
+/web/phpinfo*.php
+/web/coverage/*
+/web/components/*
+/node_modules/*
+selenium*
+geckodriver
+!/**/.gitkeep
