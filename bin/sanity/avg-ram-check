@@ -1,0 +1,221 @@
+#!/bin/sh
+# checks that average ram usage does exceed specified percentage
+#
+ME_USAGE='[--help]|[--quiet,--verbose][--warn-percent=<NUM>] <MAX-PERCENT>'
+ME_NAME=$(basename $0)
+
+#
+# echo_info function
+#
+QUIET_MODE=0
+echo_info() {
+	if [ "$QUIET_MODE" = "0" ]; then echo "$@"; fi
+}
+VERBOSE_MODE=0
+echo_extra() {
+	if [ "$VERBOSE_MODE" != "0" ]; then echo "$@"; fi
+}
+#
+# parse options
+#
+while getopts :huq-: arg; do
+  case $arg in
+    h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           warn-percent=*)WARN_PERCENT_FREE=$LONG_OPTARG ;;
+           help|usage) HELP_MODE=1 ;;
+           quiet) QUIET_MODE=1 ;;  
+           verbose) VERBOSE_MODE=1 ;;         
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo 'exit status meanings:'
+	echo '    3: average ram usage too high'
+	echo '    5: average ram usage above warning threshold'
+	echo '    7: missing dependency'
+	echo '    8: missing expected column header in sar output'
+	echo '    9: unexpected non-numeric column value in sar output'
+	exit 0
+}
+
+#
+# enforce <MAX-PERCENT> arg exists
+#
+MAX_PERCENT=$1
+[ -n "$MAX_PERCENT" ] || {
+	>&2 echo "$ME_NAME: missing <MAX-PERCENT> argument"; exit 2
+}
+
+percent_free_sanity() {
+	local percent_free=$1
+	local arglabel=$2
+	[ $(expr "x$percent_free" : "x[0-9]*$") -gt 0 ] || {
+  	>&2 echo "$ME_NAME: invalid $arglabel: must be numeric"; return 2
+  }
+  [ "$percent_free" -gt "0" ] || {
+  	>&2 echo "$ME_NAME: invalid $arglabel: must be 0 or greater"; return 2
+  }
+  [ "$percent_free" -le "100" ] || {
+  	>&2 echo "$ME_NAME: invalid $arglabel: must not exceed 100"; return 2
+  }
+}
+
+#
+# enforce MAX_PERCENT sanity
+#
+percent_free_sanity "$MAX_PERCENT" "<MAX-PERCENT>" || exit
+
+#
+# enforce WARN_PERCENT_FREE sanity
+#
+if [ ! -z "$WARN_PERCENT_FREE" ]; then
+	percent_free_sanity "$WARN_PERCENT_FREE" "--warn-percent" || exit
+fi
+
+#
+# enforce sar command available
+#
+sar -h > /dev/null 2>&1 || {
+	>&2 echo "$ME_NAME: missing 'sar' command"; exit 7
+}
+
+#
+# sar command
+#
+SAR=$(LC_TIME='POSIX' sar -r) || exit
+#
+# get sar header
+#
+SARHEAD=$(echo "$SAR" | head -3 | tail -1)
+[ -n "$SARHEAD" ] || {
+  >&2 echo "$ME_NAME: unable to find column header in sar output:"
+  >&2 echo "$SAR" | head -3 
+	exit 1
+}
+echo_extra "$SARHEAD"
+
+#
+# function to get sar column number from header
+#
+print_sar_colno() { colname=$1
+	colno=$(echo "$SARHEAD" | awk '$1 == "'$colname'"{print NR;exit}' RS='[ \t]+') || {
+		>&2 echo "$ME_NAME: failed to parse sar header"
+		return 1
+	}
+	[ -n "$colno" ] || {
+		>&2 echo "$ME_NAME: column '$colname' not found in sar header:"
+		>&2 echo "$SARHEAD"
+		return 8
+	}
+	echo $colno
+}
+
+#
+# parse sar column numbers
+#
+MEMUSEDCOL=$(print_sar_colno kbmemused) || exit
+KBUFFERCOL=$(print_sar_colno kbbuffers) || exit
+KBCACHECOL=$(print_sar_colno kbcached) || exit
+MEMFREECOL=$(print_sar_colno kbmemfree) || exit
+
+#
+# get sar average
+#
+SARAVG=$(echo "$SAR" | tail -1)
+[ -n "$SARAVG" ] || {
+  >&2 echo "$ME_NAME: unable to find averages in sar output:"
+  >&2 echo "$SAR"
+	exit 1
+}
+echo_extra "$SARAVG"
+
+print_sar_summary() {
+	echo "$SARHEAD"
+	echo "$SARAVG"
+}
+
+#
+# parse sar report averages
+#
+MEMUSED=$(echo "$SARAVG" | awk '{print $'$MEMUSEDCOL'}') || exit
+KBUFFER=$(echo "$SARAVG" | awk '{print $'$KBUFFERCOL'}') || exit
+KBCACHE=$(echo "$SARAVG" | awk '{print $'$KBCACHECOL'}') || exit
+MEMFREE=$(echo "$SARAVG" | awk '{print $'$MEMFREECOL'}') || exit
+
+#
+# enforce sanity of average values
+#
+[ $(expr "x$MEMUSED" : "x[0-9]*$") -gt 0 ] || {
+	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMUSED '$MEMUSED'"
+  >&2 print_sar_summary
+  exit 9
+}
+[ $(expr "x$KBUFFER" : "x[0-9]*$") -gt 0 ] || {
+	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBUFFER '$KBUFFER'"
+	>&2 print_sar_summary
+  exit 9
+}
+[ $(expr "x$KBCACHE" : "x[0-9]*$") -gt 0 ] || {
+	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBCACHE '$KBCACHE'"
+	>&2 print_sar_summary
+  exit 9
+}
+[ $(expr "x$MEMFREE" : "x[0-9]*$") -gt 0 ] || {
+	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMFREE '$MEMFREE'"
+	>&2 print_sar_summary
+  exit 9
+}
+
+#
+# calculate total memory on system
+#
+MEMTOTL=$((MEMUSED+MEMFREE)) || exit
+
+#
+# calculate actual memory use 
+# (don't include memory used for kernal cache or buffer)
+#
+REALUSED=$((MEMUSED-KBUFFER-KBCACHE)) || exit
+
+#
+# calculate actual memory use percentage
+#
+REALUSEDPCT=$((100 * $REALUSED / $MEMTOTL)) || exit
+
+#
+# enforce sanity of memory use percentage
+#
+[ "$REALUSEDPCT" -lt "0" ] && {
+	 >&2 echo "$ME_NAME: invalid percent calulated ($REALUSEDPCT)"
+   exit 1
+}
+
+#
+# enforce average usage percent does not exceed <MAX-PERCENT>
+#
+[ "$REALUSEDPCT" -gt "$MAX_PERCENT" ] && {
+   >&2 echo "system average ram usage of $REALUSEDPCT% exceeds maximum allowed ($MAX_PERCENT%)"
+   exit 3
+}
+
+echo_info "ok: system has $REALUSEDPCT% average ram usage"
+
+
+
+
+
+
+
+

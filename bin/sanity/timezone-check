@@ -1,0 +1,157 @@
+#!/bin/sh
+# checks that system timezone matches exepcted timezone
+#
+ME_USAGE='[--quiet|--verbose][--same-offset-ok] <EXPECTED-TIMEZONE>'
+ME_NAME=$(basename $0)
+
+#
+# echo_verbose function
+#
+QUIET_MODE=0
+echo_info() {
+	if [ "$QUIET_MODE" = "0" ]; then echo "$@"; fi
+}
+
+VERBOSE_MODE=0
+echo_verbose() {
+	if [ "$VERBOSE_MODE" = "1" ]; then echo "$@"; fi
+}
+
+#
+# parse options
+#
+SAME_OFFSET_OK=0
+while getopts :huq-: arg; do
+  case $arg in
+    h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           #MAX-PERCENT-free=*)MAX_PERCENT_FREE=$LONG_OPTARG ;;
+           help|usage) HELP_MODE=1 ;;
+           quiet) QUIET_MODE=1 ;;  
+           verbose) VERBOSE_MODE=1 ;;   
+           same-offset-ok) SAME_OFFSET_OK=1 ;;      
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo 'exit status meanings:'
+	echo '    3: system timezone name did not match expected timezone name'
+	echo "    6: system timezone name did not match expected timezone name nor did the system timezone's UTC offset match the expected timezone's UTC offset"
+	exit 0
+}
+
+EXPECTED_TIMEZONE=$1
+
+[ ! -z "$EXPECTED_TIMEZONE" ] || {
+	 >&2 echo "$ME_NAME: missing <EXPECTED-TIMEZONE>"
+	 exit 2
+}
+
+#--
+# different methods to try and determine the "full" system timezone name
+#   (i.e. "America/Los_Angeles")
+# (which one works depends on how a system is configured)
+#--
+# method #1:
+#   if /etc/timezone exists, it's contents are the timezone name
+#--
+if [ -f /etc/timezone ]; then
+  SYSTEM_TIMEZONE=`cat /etc/timezone`
+fi
+#--
+# method #2:
+#   if /etc/localtime is a symlink, resolve the timezone name from target
+#--
+if ( [ -z "$SYSTEM_TIMEZONE" ] && [ -h /etc/localtime ] && [ -d /usr/share/zoneinfo/ ] ); then
+  SYSTEM_TIMEZONE=`readlink /etc/localtime | sed "s/\/usr\/share\/zoneinfo\///"`
+fi
+#--
+# method #3:
+#   if /etc/localtime is a file, calculate it's md5 checksum
+#   and try to resolve the timezone name from a file having a 
+#   matching md5 checksum in the /usr/share/zoneinfo directory  
+#--
+if ( [ -z "$SYSTEM_TIMEZONE" ] && [ -f /etc/localtime ] && [ -d /usr/share/zoneinfo/ ] ); then
+  checksum=`md5sum /etc/localtime | cut -d' ' -f1`
+  SYSTEM_TIMEZONE=`find /usr/share/zoneinfo/ -type f -exec md5sum {} \; | grep "^$checksum" | sed "s/.*\/usr\/share\/zoneinfo\///" | head -n 1`
+fi
+#--
+# method #4:
+#   as last resort, use the "short" timezone time
+#--
+if [ -z "$SYSTEM_TIMEZONE" ]; then
+	SYSTEM_TIMEZONE=$(date +%Z)
+fi
+
+echo_verbose "expected timezone: $EXPECTED_TIMEZONE"
+echo_verbose "system timezone: $SYSTEM_TIMEZONE"
+
+#
+# if --same-offset-ok option, calculate UTC offset of <EXPECTED-TIMEZONE>
+#
+if [ "$SAME_OFFSET_OK" = "1" ]; then
+	 case $EXPECTED_TIMEZONE in
+  	*'/'* ) 
+     EXPECTED_UTC_OFFSET=$(TZ=":$EXPECTED_TIMEZONE" date +%z) || {
+  	 	 CMD_STATUS=$?
+  	 	 >&2 echo "$ME_NAME: (internal error) unable to determine expected UTC offset"
+  	 	 exit $CMD_STATUS
+  	 }
+  	 SYSTEM_UTC_OFFSET=$(date +%z)
+   ;;
+   * )
+   SYSTEM_TZ_ABBR=$(date +%Z)
+   EXPECTED_UTC_TIME=$(date +%s --utc -d "12:00:00 $EXPECTED_TIMEZONE")
+   SYSTEM_UTC_TIME=$(date +%s --utc -d "12:00:00 $SYSTEM_TZ_ABBR")
+   UTC_TIME=$(date +%s --utc -d "12:00:00")
+   EXPECTED_UTC_OFFSET_SEC=$((UTC_TIME-EXPECTED_UTC_TIME))
+   EXPECTED_UTC_OFFSET=$((EXPECTED_UTC_OFFSET_SEC/60/60))
+   SYSTEM_UTC_OFFSET_SEC=$((UTC_TIME-SYSTEM_UTC_TIME))
+   SYSTEM_UTC_OFFSET=$((SYSTEM_UTC_OFFSET_SEC/60/60))
+   ;;
+	 esac
+	 
+	 echo_verbose "expected timezone UTC offset: $EXPECTED_UTC_OFFSET"
+fi
+
+
+if [ "$SAME_OFFSET_OK" = "1" ]; then
+	 echo_verbose "system timezone UTC offset: $SYSTEM_UTC_OFFSET"
+fi
+
+#
+# compare actual system timezone with <EXPECTED-TIMEZONE>
+#
+if [ "$SYSTEM_TIMEZONE" != "$EXPECTED_TIMEZONE" ]; then
+	#
+	# if --same-offset-ok option, compare UTC offset of actual with <EXPECTED-TIMEZONE>
+	#
+	if [ "$SAME_OFFSET_OK" = "1" ]; then
+		 if [ "$EXPECTED_UTC_OFFSET" != "$SYSTEM_UTC_OFFSET" ]; then
+		 	 >&2 echo "system timezone name did not match expected timezone name nor did the system timezone's UTC offset match the expected timezone's UTC offset (expected offset: $EXPECTED_UTC_OFFSET, actual offset: $SYSTEM_UTC_OFFSET, expected name: $EXPECTED_TIMEZONE, actual name: $SYSTEM_TIMEZONE)"
+		 	 exit 6
+		 fi
+  else
+	   >&2 echo "system timezone name did not match expected timezone name (expected: $EXPECTED_TIMEZONE, actual: $SYSTEM_TIMEZONE)"
+	   exit 3
+  fi
+fi
+
+echo_info "ok: system timezone matched expected timezone ($EXPECTED_TIMEZONE)"
+exit 0
+
+
+
+
+

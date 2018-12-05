@@ -1,0 +1,68 @@
+#!/bin/sh
+# checks if security updates are available
+#
+ME_USAGE='[--help]|[--quiet]'
+ME_NAME=$(basename $0)
+
+#
+# echo_info function
+#
+QUIET_MODE=0
+echo_info() {
+	if [ "$QUIET_MODE" = "0" ]; then echo "$@"; fi
+}
+
+#
+# parse options
+#
+while getopts :huvq-: arg; do
+  case $arg in
+    v|h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage) HELP_MODE=1 ;;        
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	exit 0
+}
+
+#
+# enforce debian based distro
+#
+[ -f "/etc/debian_version" ] || {
+	>&2 echo "$ME_NAME: this script only works on debian based distros"
+	exit 1
+}
+
+#
+# check if security updates are available
+#
+NUM_SECURITY_UPDATES=$(/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 2) || {
+	>&2 echo "$ME_NAME: failed to get number of pending security updates"
+	exit 1
+}
+[ -z "$NUM_SECURITY_UPDATES" ] && {
+	>&2 echo "$ME_NAME: failed to parse number pending security updates"
+	exit 1
+}
+[ "$NUM_SECURITY_UPDATES" = "0" ] || {
+	>&2 echo "$NUM_SECURITY_UPDATES security updates are available"
+  exit 3
+}
+
+#
+# ok message
+#
+echo_info "ok: no security updates are available"

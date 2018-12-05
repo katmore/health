@@ -1,0 +1,129 @@
+#!/bin/sh
+# checks that a minimum amount of free disk space  exists on the filesystem
+# for a specified path
+#
+MIN_PERCENT_FREE=20
+ME_USAGE="[--help]|[--quiet][--min-percent-free=<NUM(=$MIN_PERCENT_FREE)>][--warn-min-percent-free=<NUM>] <PATH>"
+ME_NAME=$(basename $0)
+
+#
+# echo_info function
+#
+QUIET_MODE=0
+echo_info() {
+	if [ "$QUIET_MODE" = "0" ]; then echo "$@"; fi
+}
+
+#
+# parse options
+#
+while getopts :huq-: arg; do
+  case $arg in
+    h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           min-percent-free=*)MIN_PERCENT_FREE=$LONG_OPTARG ;;
+           warn-min-percent-free=*)WARN_MIN_PERCENT_FREE=$LONG_OPTARG ;;
+           help|usage) HELP_MODE=1 ;;
+           quiet) QUIET_MODE=1 ;;           
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "usage:  $ME_NAME $ME_USAGE\n"
+	echo 'exit status meanings:'
+	echo '    3: not enough free space'
+	echo '    5: free space below warning threshold'
+	exit 0
+}
+
+#
+# function to check percent-free sanity
+#
+percent_free_sanity() {
+	local percent_free=$1
+	local optname=$2
+	[ $(expr "x$percent_free" : "x[0-9]*$") -gt 0 ] || {
+  	>&2 echo "$ME_NAME: invalid --$optname: must be numeric"; return 2
+  }
+  [ "$percent_free" -ge "0" ] || {
+  	>&2 echo "$ME_NAME: invalid --$optname: must be 0 or greater"; return 2
+  }
+  [ "$percent_free" -le "100" ] || {
+  	>&2 echo "$ME_NAME: invalid --$optname: must not exceed 100"; return 2
+  }
+}
+
+#
+# enforce <PATH> arg exists
+#
+CHECKPATH=$1
+[ -n "$CHECKPATH" ] || {
+	>&2 echo "$ME_NAME: missing <PATH> argument"; exit 2
+}
+
+#
+# enforce MIN_PERCENT_FREE sanity
+#
+percent_free_sanity "$MIN_PERCENT_FREE" 'min-percent-free' || exit
+
+#
+# if --warn-min-percent-free specified
+#   enforce WARN_MIN_PERCENT_FREE sanity
+#
+if [ ! -z "$WARN_MIN_PERCENT_FREE" ]; then
+	percent_free_sanity $WARN_MIN_PERCENT_FREE 'warn-min-percent-free' || exit
+	[ "$MIN_PERCENT_FREE" -lt "$WARN_MIN_PERCENT_FREE" ] || {
+		 >&2 echo "$ME_NAME: --warn-min-percent-free must be greater than --min-percent-free ($MIN_PERCENT_FREE)"; exit 2
+	}
+fi
+
+#
+# run df command
+#
+USED=$(df "$CHECKPATH") || exit
+
+#
+# parse df output
+#
+USED=$(echo "$USED" | awk 'NR==2 { print $5 }' | sed --expression='s/[^0-9]*//g') || exit
+
+#
+# calc free percentage
+#
+FREE_PERCENT=$((100 - $USED))
+
+#
+# if --warn-min-percent-free specified
+#   exit with warning code if %free disk space does not meet
+#   WARN_MIN_PERCENT_FREE
+#
+if [ ! -z "$WARN_MIN_PERCENT_FREE" ]; then
+	[ "$FREE_PERCENT" -ge "$WARN_MIN_PERCENT_FREE" ] || {
+     echo "'$CHECKPATH' has only $FREE_PERCENT% free disk space (warn when less than $WARN_MIN_PERCENT_FREE%, fail when less than $MIN_PERCENT_FREE%)"
+     exit 5
+  }
+fi
+
+#
+# enforce %free disk space meets MIN_PERCENT_FREE
+#
+[ "$FREE_PERCENT" -ge "$MIN_PERCENT_FREE" ] || {
+   echo "'$CHECKPATH' has only $FREE_PERCENT% free disk space ($MIN_PERCENT_FREE% is minimum required)"
+   exit 3
+}
+
+#
+# successful test
+#
+echo_info "ok: '$CHECKPATH' has $FREE_PERCENT% free disk space"
+exit 0

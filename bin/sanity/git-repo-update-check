@@ -1,0 +1,157 @@
+#!/bin/sh
+# checks that local git repo is up-to-date with remote 
+#
+ME_DESC="checks that local git repo is up-to-date with remote"
+ME_USAGE='[--quiet][--repo-path=<DIR>]'
+ME_NAME=$(basename $0)
+ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR#/}; ME_DIR=${ME_DIR:-.}; ME_DIR=$(cd "$ME_DIR"; pwd)
+exit_status_meanings() {
+	echo 'exit status meanings:'
+  echo '    3: need to pull; local git repo is behind remote'
+  echo '    5: need to push; local git repo is ahead of remote'
+  echo '    6: local git repo base has diverged from remote origin'
+}
+usage() {
+  echo 'options:'
+  echo '  --quiet'
+  echo '    only print important messages'
+  echo "  --repo-path=<DIR>(=$ME_DIR)"
+  echo '    specifiy repo path'
+}
+
+#
+# parse options
+#
+HELP_MODE=0
+QUIET_MODE=0
+REPO_PATH=$ME_DIR
+while getopts :huavq-: arg; do
+  case $arg in
+    h|u|a|v ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage|about|version) HELP_MODE=1 ;;  
+           repo-path=*) REPO_PATH=$LONG_OPTARG ;;  
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "$ME_NAME\n$ME_DESC\n(c) 2018 ActivePitch Inc. All Rights Reserved.\n\n"
+	printf "usage:\n  $ME_NAME $ME_USAGE\n\n"
+  usage
+  echo ""
+  exit_status_meanings
+	exit 0
+}
+
+#
+# enforce 'git' command dependency
+#
+git --version > /dev/null 2>&1 || {
+	 >&2 echo "$ME_NAME: 'git' command is unavailable"
+	 exit 1
+}
+
+#
+# apply --repo-path option
+#
+if [ "$(pwd)" != "$REPO_PATH" ]; then
+	[ ! -z "$REPO_PATH" ] || {
+		 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', cannot be empty"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2
+	}
+  cd $REPO_PATH || { 
+  	 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', 'cd' failed with exit status $?"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2 
+  }
+fi
+
+#
+# update remote info
+#
+GIT_MSG=$(git remote -v update 2>&1) || {
+	 >&2 echo "$ME_NAME: 'git remote -v update' failed with exit status $? with the message: $GIT_MSG"
+	 exit 1
+}
+
+#
+# determine LOCAL commit hash
+#
+LOCAL=$(git rev-parse @) || {
+	 >&2 echo "$ME_NAME: unable to get local commit hash, 'git rev-parse' failed with exit status $?"
+	 exit 1
+}
+[ $(expr "x$LOCAL" : "x[0-9a-f]*$") -gt 1 ] || {
+	 >&2 echo "$ME_NAME: unable to get local commit hash, got invalid checksum value from 'git rev-parse'"
+	 exit 1
+}
+
+#
+# determine REMOTE commit hash
+#
+REMOTE=$(git rev-parse @{u}) || {
+	 >&2 echo "$ME_NAME: unable to get remote commit hash, 'git rev-parse' failed with exit status $?"
+	 exit 1
+}
+[ $(expr "x$REMOTE" : "x[0-9a-f]*$") -gt 1 ] || {
+	 >&2 echo "$ME_NAME: unable to get remote commit hash, got invalid checksum value from 'git rev-parse'"
+	 exit 1
+}
+
+#
+# determine BASE commit hash
+#
+BASE=$(git merge-base @ @{u}) || {
+	 >&2 echo "$ME_NAME: unable to get base commit hash, 'git merge-base' failed with exit status $?"
+	 exit 1
+}
+[ $(expr "x$BASE" : "x[0-9a-f]*$") -gt 1 ] || {
+	 >&2 echo "$ME_NAME: unable to get base commit hash, got invalid checksum value from 'git merge-base'"
+	 exit 1
+}
+
+#
+# success: up-to-date if LOCAL matches REMOTE
+#
+if [ $LOCAL = $REMOTE ]; then
+	[ "$QUIET_MODE" = "0" ] && echo "ok: local git repo is up-to-date with remote, hash: $(echo $REMOTE | cut -c1-7)"
+	exit 0
+fi
+
+#
+# fail: need to pull if LOCAL matches BASE
+#
+if [ $LOCAL = $BASE ]; then
+   >&2 echo "need to pull; local git repo is behind remote, hash: $(echo $REMOTE | cut -c1-7), local hash: $(echo $LOCAL | cut -c1-7)"
+   exit 3
+fi
+
+#
+# fail: need to push if REMOTE matches BASE
+#
+if [ $REMOTE = $BASE ]; then
+   >&2 echo "need to push; local git repo is ahead of remote, hash: $(echo $REMOTE | cut -c1-7), local hash: $(echo $LOCAL | cut -c1-7)"
+   exit 5
+fi
+
+#
+# fail: apparently BASE has diverged from REMOTE
+#
+>&2 echo "local git repo base has diverged from remote, checksum: $(echo $REMOTE | cut -c1-7), local hash: $(echo $LOCAL | cut -c1-7), base hash: $(echo $BASE | cut -c1-7)"
+exit 6
+
+
+
+
+
+
+

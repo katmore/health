@@ -1,0 +1,120 @@
+#!/bin/sh
+# checks that the local git repo's remote origin url matches an expected value 
+#
+ME_DESC="checks that the local git repo's remote origin url matches an expected value"
+ME_USAGE='[--quiet] <EXPECTED-URL>'
+ME_NAME=$(basename $0)
+ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR#/}; ME_DIR=${ME_DIR:-.}; ME_DIR=$(cd "$ME_DIR"; pwd)
+exit_status_meanings() {
+	echo 'exit status meanings:'
+  echo '    3: remote origin url did not match <EXPECTED-URL>'
+}
+usage() {
+	echo 'arguments:'
+	echo '  <EXPECTED-URL>'
+  echo '    expected remote origin url of the local git repo'
+  echo ''
+  echo 'options:'
+  echo '  --quiet'
+  echo '    only print important messages'
+  echo "  --repo-path=<DIR>(=$ME_DIR)"
+  echo '    specifiy repo path'
+}
+
+#
+# parse options
+#
+HELP_MODE=0
+QUIET_MODE=0
+REPO_PATH=$ME_DIR
+while getopts :huavq-: arg; do
+  case $arg in
+    h|u|a|v ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage|about|version) HELP_MODE=1 ;; 
+           repo-path=*) REPO_PATH=$LONG_OPTARG ;;   
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "$ME_NAME\n$ME_DESC\n(c) 2018 ActivePitch Inc. All Rights Reserved.\n\n"
+	printf "usage:\n  $ME_NAME $ME_USAGE\n\n"
+  usage
+  echo ""
+  exit_status_meanings
+	exit 0
+}
+
+#
+# enforce 'git' command dependency
+#
+git --version > /dev/null 2>&1 || {
+	 >&2 echo "$ME_NAME: 'git' command is unavailable"
+	 exit 1
+}
+
+
+#
+# apply --repo-path option
+#
+if [ "$(pwd)" != "$REPO_PATH" ]; then
+	[ ! -z "$REPO_PATH" ] || {
+		 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', cannot be empty"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2
+	}
+  cd $REPO_PATH || { 
+  	 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', 'cd' failed with exit status $?"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2 
+  }
+fi
+
+#
+# enforce <EXPECTED-URL> argument
+#
+EXPECTED_URL=$1
+[ ! -z "$EXPECTED_URL" ] || {
+	 >&2 echo "$ME_NAME: missing <EXPECTED-URL> argument"
+	 exit 2
+}
+shift
+
+#
+# get actual URL
+#
+ACTUAL_URL=$(git config --get remote.origin.url) || {
+	 >&2 echo "$ME_NAME: 'git config' failed with status $?"
+	 exit 1
+}
+
+#
+# fail if not a match
+#
+if [ "$ACTUAL_URL" != "$EXPECTED_URL" ]; then
+	 >&2 echo "expected git remote origin url '$EXPECTED_URL', got instead '$ACTUAL_URL'"
+	 exit 3
+fi
+
+#
+# success
+#
+[ "$QUIET_MODE" = "0" ] && echo "ok: git remote origin url matched expected url '$EXPECTED_URL'"
+exit 0
+
+
+
+
+
+
+
+
+

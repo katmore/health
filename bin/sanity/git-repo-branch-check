@@ -1,0 +1,141 @@
+#!/bin/sh
+# checks that the local git repo's branch matches an expected value 
+#
+ME_DESC="checks that the local git repo's branch matches an expected value"
+ME_USAGE='[--quiet][--repo-path=<DIR>] <EXPECTED-BRANCH>'
+ME_NAME=$(basename $0)
+ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR#/}; ME_DIR=${ME_DIR:-.}; ME_DIR=$(cd "$ME_DIR"; pwd)
+exit_status_meanings() {
+	echo 'exit status meanings:'
+  echo '    3: local branch name did not match <EXPECTED-BRANCH>'
+}
+usage() {
+	echo 'arguments:'
+	echo '  <EXPECTED-BRANCH>'
+  echo '    expected local branch name'
+  echo ''
+  echo 'options:'
+  echo '  --quiet'
+  echo '    only print important messages'
+  echo "  --repo-path=<DIR>(=$ME_DIR)"
+  echo '    specifiy repo path'
+}
+
+#
+# parse options
+#
+HELP_MODE=0
+QUIET_MODE=0
+REPO_PATH=$ME_DIR
+while getopts :huavq-: arg; do
+  case $arg in
+    h|u|a|v ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage|about|version) HELP_MODE=1 ;; 
+           repo-path=*) REPO_PATH=$LONG_OPTARG ;;  
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "$ME_NAME\n$ME_DESC\n(c) 2018 ActivePitch Inc. All Rights Reserved.\n\n"
+	printf "usage:\n  $ME_NAME $ME_USAGE\n\n"
+  usage
+  echo ""
+  exit_status_meanings
+	exit 0
+}
+
+#
+# enforce 'git' command dependency
+#
+git --version > /dev/null 2>&1 || {
+	 >&2 echo "$ME_NAME: 'git' command is unavailable"
+	 exit 1
+}
+
+#
+# apply --repo-path option
+#
+if [ "$(pwd)" != "$REPO_PATH" ]; then
+	[ ! -z "$REPO_PATH" ] || {
+		 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', cannot be empty"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2
+	}
+  cd $REPO_PATH || { 
+  	 >&2 echo "$ME_NAME: invalid --repo-path '$REPO_PATH', 'cd' failed with exit status $?"
+  	 [ "$REPO_PATH" = "$ME_DIR" ] && exit 1 || exit 2 
+  }
+fi
+
+#
+# enforce <EXPECTED-BRANCH> argument
+#
+EXPECTED_BRANCH=$1
+[ ! -z "$EXPECTED_BRANCH" ] || {
+	 >&2 echo "$ME_NAME: missing <EXPECTED-BRANCH> argument"
+	 exit 2
+}
+shift
+
+#
+# function print_git_branch
+#   prints the name of the git repo branch name
+#
+print_git_branch() {
+	local branch=
+	branch=$(git branch | grep \\*) || {
+  	 >&2 echo "print_git_branch: unable to determine active branch, 'git branch | grep' failed with status $?"
+  	 return 1
+  }
+  [ ! -z "$branch" ] || {
+     >&2 echo "print_git_branch: unable to determine active branch, got empty value from 'git branch | grep'"
+  	 return 1
+  }
+  branch=$(echo "$branch" | cut -d ' ' -f2) || {
+  	 >&2 echo "print_git_branch: unable to determine active branch, 'echo | cut' failed with status $?"
+  	 return 1
+  }
+  [ ! -z "$branch" ] || {
+  	 >&2 echo "print_git_branch: unable to determine active branch, got empty value from 'git branch | grep | cut'"
+  	 return 1
+  }
+  echo $branch
+}
+
+#
+# get actual branch
+#
+ACTUAL_BRANCH=$(print_git_branch) || exit
+
+#
+# fail if not a match
+#
+if [ "$ACTUAL_BRANCH" != "$EXPECTED_BRANCH" ]; then
+	 >&2 echo "expected git branch '$EXPECTED_BRANCH', got instead '$ACTUAL_BRANCH'"
+	 exit 3
+fi
+
+#
+# success
+#
+[ "$QUIET_MODE" = "0" ] && echo "ok: git branch matched expected name '$EXPECTED_BRANCH'"
+exit 0
+
+
+
+
+
+
+
+
+

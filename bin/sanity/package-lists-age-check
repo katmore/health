@@ -1,0 +1,99 @@
+#!/bin/sh
+# checks if package lists have been recently updated
+#
+MAX_UPDATE_AGE=86400
+ME_USAGE="[--quiet][--max-update-age=<SECONDS(=$MAX_UPDATE_AGE)>]"
+ME_NAME=$(basename $0)
+
+#
+# echo_info function
+#
+QUIET_MODE=0
+echo_info() {
+	if [ "$QUIET_MODE" = "0" ]; then echo "$@"; fi
+}
+
+#
+# parse options
+#
+while getopts :huvq-: arg; do
+  case $arg in
+    v|h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage) HELP_MODE=1 ;; 
+           max-update-age=*)MAX_UPDATE_AGE=$LONG_OPTARG ;;       
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# enforce --max-update-age sanity
+#
+[ $(expr "x$MAX_UPDATE_AGE" : "x[0-9]*$") -gt 0 ] || {
+	>&2 echo "$ME_NAME: invalid --max-update-age: must be numeric"
+	exit 2
+}
+[ "$MAX_UPDATE_AGE" -gt "1" ] || {
+	>&2 echo "$ME_NAME: invalid --max-update-age: must be 1 or greater"
+	exit 2
+}
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo 'exit status meanings:'
+	echo '    3: package lists have not been recently updated'
+	exit 0
+}
+
+#
+# enforce debian based distro
+#
+[ -f "/etc/debian_version" ] || {
+	>&2 echo "$ME_NAME: this script only works on debian based distros"
+	exit 1
+}
+
+#
+# get last package list update time
+#
+LAST_UPDATE_TIME=$(stat -c %Y /var/cache/apt/pkgcache.bin) || {
+	>&2 echo "$ME_NAME: unable to determine when package lists were last updated, 'stat /var/cache/apt/pkgcache.bin' failed with status $?"
+	exit 1
+}
+
+#
+# get current time
+#
+NOW_TIME=$(date +'%s') || {
+	>&2 echo "$ME_NAME: unable to determine current timestamp, 'date' failed with status $?"
+	exit 1
+}
+
+#
+# calc time difference
+#
+TIME_DIFF=$((NOW_TIME - LAST_UPDATE_TIME)) || {
+  >&2 echo "$ME_NAME: unable to determine package lists cache age, failed with status $?"
+	exit 1
+}
+
+#
+# fail if time difference exceeds --max-update-age
+#
+[ "$TIME_DIFF" -lt "$MAX_UPDATE_AGE" ] || {
+	 >&2 echo "package lists have not been updated for '$TIME_DIFF' seconds, max allowed seconds: $MAX_UPDATE_AGE"
+	 exit 3
+}
+
+[ "$QUIET_MODE" = "0" ] && echo "ok: package lists were last updated '$TIME_DIFF' seconds ago, max allowed seconds: $MAX_UPDATE_AGE"
+
+exit 0

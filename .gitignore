@@ -2,9 +2,9 @@
 !/.gitignore
 *.log
 /vendor/*
-/poop/*
+/config/*
+!/config/**/*-sample.php
 /web/phpinfo*.php
-/web/coverage/*
 /web/components/*
 /node_modules/*
 selenium*
