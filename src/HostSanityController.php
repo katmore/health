@@ -3,7 +3,7 @@ namespace Healthsvc;
 
 class HostSanityController {
    
-   final public static function exec(string $cmd, &$stdout="", &$stderr="") :int {
+   final protected static function exec(string $cmd, &$stdout="", &$stderr="") :int {
       $pipes = null;
       $proc = proc_open($cmd,[
          0 => ["pipe", "r"],
@@ -27,16 +27,8 @@ class HostSanityController {
       $stderr = stream_get_contents($pipes[2]);
       fclose($pipes[2]);
       
+      return $status['exitcode'];
       
-      $proc_close_status = proc_close($proc);
-      
-      if ($proc_close_status!==-1) {
-         return $proc_close_status;
-      }
-      if (isset($status['exitcode']) && ($status['exitcode']!==-1)) {
-         return $status['exitcode'];
-      }
-      return -1;
    }
    
    /**
@@ -58,7 +50,7 @@ class HostSanityController {
       
       if (count($bin)) {
          if (!is_dir($bin_dir)) {
-            trigger_error("bin_dir does not exit: $bin_dir",E_USER_ERROR);
+            throw new HostSanityBinDirNotExistException($bin_dir);
          }
          $bin_dir = realpath($bin_dir);
          array_walk($bin, function($cmd,$label) use(&$exec,$bin_dir)
@@ -100,7 +92,7 @@ class HostSanityController {
         
          if ( (is_scalar($status) && ($exitStatus===$status)) ||
             (is_array($status) && in_array($exitStatus,$status,true)) ) {
-            $this->statusData->moveHealthFailureToHealth($label);
+            $this->statusData->moveHealthFailureToWarn($label);
          }
       });
    }

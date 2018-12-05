@@ -174,7 +174,7 @@ abstract class StatusData extends SerializableData {
       return false;
    }
    
-   public function moveHealthFailureToHealth(string $label) : bool {
+   public function moveHealthFailureToWarn(string $label) : bool {
       if (isset($this->healthFailure[$label])) {
          $this->healthWarn[$label] = $this->healthFailure[$label];
          unset($this->healthFailure[$label]);
@@ -190,16 +190,16 @@ abstract class StatusData extends SerializableData {
       $this->refreshMessage();
    }
    
-   public function __construct(int $healthStatusTtl=0, string $healthStatusTime=null) {
+   public function __construct(int $health_staus_ttl=0, string $health_status_time=null) {
       
-      $this->healthStatusTtl = $healthStatusTtl;
-      if ($healthStatusTime!==null) {
-         $healthStatusTime = strtotime($healthStatusTime);
+      $this->healthStatusTtl = $health_staus_ttl;
+      if ($health_status_time!==null) {
+         $health_status_time = strtotime($health_status_time);
       }
-      if (is_int($healthStatusTime)) {
-         $this->healthStatusTtl = date('c',$healthStatusTime);
+      if (is_int($health_status_time)) {
+         $this->healthStatusTime = date('c',$health_status_time);
       } else {
-         $this->healthStatusTtl = date('c');
+         $this->healthStatusTime = date('c');
       }
       
    }

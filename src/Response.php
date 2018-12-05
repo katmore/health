@@ -73,7 +73,6 @@ abstract class Response implements ResponseInterface {
       echo $this->responseBody;
    }
    final protected function setResponseBody(string $response_body,string $content_type,int $response_code=200) {
-      $this->responseData = [];
       $this->hasResponseData = false;
       $this->responseBody = $response_body;
       $this->contentType = $content_type;
@@ -82,12 +81,11 @@ abstract class Response implements ResponseInterface {
    final protected function setResponseData(array $response_data, int $response_code=200) {
       $this->hasResponseData = true;
       if (false===($responseBody = json_encode($response_data))) {
-         trigger_error('error while encoding json: '.json_last_error_msg(),E_USER_ERROR);
+         throw new ResponseDataInvalidException('error while encoding json: '.json_last_error_msg());
       }
-      $this->responseBody = $responseBody;
       $this->responseData = $response_data;
-      $this->contentType = self::JSON_CONTENT_TYPE;
-      $this->responseCode = $response_code;
+      
+      $this->setResponseBody($responseBody,self::JSON_CONTENT_TYPE,$response_code);
    }
    
    

@@ -6,6 +6,8 @@ use Healthsvc\HostSanityConfig;
 
 trait HostSanityConfigTrait {
    
+   
+   
    public function emptyConfigProvider() : array {
       return [[new HostSanityConfig]];
    }
@@ -64,7 +66,7 @@ trait HostSanityConfigTrait {
       $config = [];
       
       $config['exec']['echo-test'] = '>&2 echo failure; exit 3';
-      $config['warn-exit-status']['system-timezone'] = [3];
+      $config['warn-exit-status']['echo-test'] = [3];
       
       return [[$config,new HostSanityConfig($config)]];
    }

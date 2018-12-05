@@ -61,6 +61,10 @@ abstract class SerializableData implements JsonSerializable {
       return $data;
    }
    
+   public function toSerializedArray() : array {
+      return json_decode(json_encode($this->jsonSerialize()),true);
+   }
+   
    /**
     * Provides an assoc array corresponding to this response data item
     * @return array

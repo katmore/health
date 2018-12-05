@@ -9,7 +9,7 @@ abstract class ConfigController {
     */
    private $config;
    
-   protected function getRequestConfigVal(string $key) {
+   protected function getConfigVal(string $key) {
       if (!isset($this->config[$key])) return;
       return $this->config[$key];
    }

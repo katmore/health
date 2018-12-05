@@ -10,6 +10,8 @@ class HostSanityConfigTest extends TestCase {
    
    use HostSanityConfigTrait;
    
+   
+   
    /**
     * @dataProvider binAllSuccessConfigProvider
     */

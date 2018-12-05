@@ -26,11 +26,11 @@ abstract class Request {
       
       $request_method===null && isset($_SERVER['REQUEST_METHOD']) && $request_method = $_SERVER['REQUEST_METHOD'];
       
-      if (!$this->isRequestMethodAllowed($request_method)) {
-         throw new RequestMethodNotAllowedException($request_method);
-      }
+      $request_method!==null && $this->requestMethod = $request_method;
       
-      $this->requestMethod = $request_method;
+      if (!$this->isRequestMethodAllowed()) {
+         throw new RequestMethodNotAllowedException($this->requestMethod);
+      }
       
       $request_query===null && $request_query = $_GET;
       

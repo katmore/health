@@ -3,7 +3,7 @@ namespace Healthsvc;
 
 use RuntimeException;
 
-abstract class ResponseException extends RuntimeException implements ResponseInterface, ResponseBodyPrinterInterface {
+abstract class ResponseException extends RuntimeException implements ResponseInterface {
    final public function printResponseBody(bool $send_headers=true) : void {
       if ($send_headers) {
          header("Content-type: ".$this->getContentType());

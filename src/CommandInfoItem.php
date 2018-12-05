@@ -3,9 +3,11 @@ namespace Healthsvc;
 
 class CommandInfoItem extends InfoItem {
    protected $stdout;
-//    protected function getSerializableProperties(): array {
-//       return ['stdout',];
-//    }
+   
+   public function getStdout() : array {
+      return $this->stdout;
+   }
+
    public function __construct(string $stdout) {
       if (empty($stdout)) {
          $this->stdout = [];

@@ -12,7 +12,7 @@ class HostSanityRequestResponseController extends RequestResponseController {
     * @throws \Healthsvc\RequestMethodNotAllowedException
     */
    public function getRequest(): Request {
-      return new HostSanityRequest;
+      return new HostSanityRequest($this->requestMethod,$this->requestQuery,$this->requestBody,$this->contentType);
    }
    
    /**
@@ -37,7 +37,17 @@ class HostSanityRequestResponseController extends RequestResponseController {
       }
    }
    
-   public function __construct(string $config_file=null) {
+   private $requestMethod;
+   private $requestQuery;
+   private $requestBody;
+   private $contentType;
+   
+   public function __construct(string $config_file=null,string $request_method=null,array $request_query=null,string $request_body=null,string $content_type=null) {
+      
+      $this->requestMethod = $request_method;
+      $this->requestQuery = $request_query;
+      $this->requestBody = $request_body;
+      $this->contentType = $content_type;
       
       parent::__construct($config_file);
       
