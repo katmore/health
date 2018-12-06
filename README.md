@@ -22,5 +22,5 @@ The [`tests.sh`](./tests.sh) wrapper script is provided for convenience.
 ## Legal
 "Healthsvc" is distributed under the terms of the [MIT license](LICENSE) or the [GPLv3](GPLv3) license.
 
-Copyright (c) 2016-2018, Doug Bird.
+Copyright (c) 2018, Doug Bird.
 All rights reserved.
