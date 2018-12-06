@@ -15,7 +15,7 @@ DEFAULT_DOCROOT=$ME_DIR/../web # default document root
 
 #
 # usage
-ME_USAGE="[--port=<PORT>(=$DEFAULT_PORT)][--addr=<ADDR>(=$DEFAULT_ADDR)][--docroot=<DOCROOT>(=healthsvc/web)] [[--]<...more php -s options>]"
+ME_USAGE="[--port=<PORT>(=$DEFAULT_PORT)][--addr=<ADDR>(=$DEFAULT_ADDR)][--docroot=<DOCROOT>(=healthsvc/web)] [[--]<...passthru args>]"
 
 #
 # print_hint function
