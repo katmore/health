@@ -47,7 +47,7 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 # help mode
 #
 [ "$HELP_MODE" = "1" ] && {
-	printf "$ME_NAME\n$ME_DESC\n(c) 2018 ActivePitch Inc. All Rights Reserved.\n\n"
+	printf "$ME_NAME\n$ME_DESC\n(c) 2018 Doug Bird Inc. All Rights Reserved.\n\n"
 	printf "usage:\n  $ME_NAME $ME_USAGE\n\n"
   usage
   echo ""
