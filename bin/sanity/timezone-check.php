@@ -54,11 +54,21 @@ $cli = new class() {
       return false;
    }
    private function printUsage() : void {
-      $line = explode("\n",static::ME_USAGE);
-      $this->printLine("usage:");
-      array_walk($line,function($line) {
-         $this->printLine("  ".static::ME_NAME." $line",static::PRINT_LINE_ALWAYS);
+      echo "usage:\n";
+      $usage = explode("\n",trim(static::ME_USAGE));
+      array_walk($usage,function($line) {
+         echo "   ".static::ME_NAME." $line\n";
       });
+      //echo trim(static::ME_USAGE)."\n\n";
+      echo "\narguments:\n";
+      echo "  <EXPECTED-TIMEZONE>\n";
+      echo "  The expected timezone name of the local php configuration.\n";
+      echo "\noptions:\n";
+      echo "  --same-offset-ok\n";
+      echo "   Checks if php's timezone has the same UTC offset as the <EXPECTED-TIMEZONE> when its timezone name does not match.\n";
+      echo "\nexit status meanings:\n";
+      echo "    3: system timezone name did not match expected timezone name\n";
+      echo "    6: system timezone name did not match expected timezone name nor did the system timezone's UTC offset match the expected timezone's UTC offset\n";
    }
    //private function checkPhp()
    

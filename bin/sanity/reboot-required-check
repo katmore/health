@@ -35,6 +35,9 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 #
 [ "$HELP_MODE" = "1" ] && {
 	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo 'exit status meanings:'
+   echo '    3: a reboot is required'
+   echo '    7: unable to determine if reboot is required on this system'
 	exit 0
 }
 
@@ -43,7 +46,7 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 #
 [ -f "/etc/debian_version" ] || {
 	>&2 echo "$ME_NAME: this script only works on debian based distros"
-	exit 1
+	exit 7
 }
 
 #

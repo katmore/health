@@ -8,6 +8,7 @@ exit_status_meanings() {
 	echo 'exit status meanings:'
   echo '    3: Update-Package-Lists or Unattended-Upgrade is not enabled'
   echo '    5: AutocleanInterval is not enabled'
+  echo '    7: unable to determine unattended upgrades on this system'
   echo '    9: the unattended-upgrade package is not installed on the system'
   echo '   10: AutocleanInterval exceeds the --autoclean-interval-max value'
   echo '   15: Automatic-Reboot is not enabled'
@@ -25,7 +26,7 @@ usage() {
 	echo '  --autoclean'
   echo '    enforce that the apt config value "APT::Periodic::AutocleanInterval" is not "0"'
   echo '  --autoclean-interval-max=<NUM>'
-  echo '    enforce that the apt config value "APT::Periodic::AutocleanInterval" is less than specified <NUM>'
+  echo '    enforce that the apt config value "APT::Periodic::AutocleanInterval" is <NUM> or lower'
 }
 
 #
@@ -83,7 +84,7 @@ fi
 #
 [ -f "/etc/debian_version" ] || {
 	>&2 echo "$ME_NAME: this script only works on debian based distros"
-	exit 1
+	exit 7
 }
 
 #

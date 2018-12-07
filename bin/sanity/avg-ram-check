@@ -44,9 +44,8 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 	echo 'exit status meanings:'
 	echo '    3: average ram usage too high'
 	echo '    5: average ram usage above warning threshold'
-	echo '    7: missing dependency'
-	echo '    8: missing expected column header in sar output'
-	echo '    9: unexpected non-numeric column value in sar output'
+	echo '    7: system is missing the "sar" command'
+	echo '    8: parse error while processing "sar" command output'
 	exit 0
 }
 
@@ -160,22 +159,22 @@ MEMFREE=$(echo "$SARAVG" | awk '{print $'$MEMFREECOL'}') || exit
 [ $(expr "x$MEMUSED" : "x[0-9]*$") -gt 0 ] || {
 	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMUSED '$MEMUSED'"
   >&2 print_sar_summary
-  exit 9
+  exit 8
 }
 [ $(expr "x$KBUFFER" : "x[0-9]*$") -gt 0 ] || {
 	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBUFFER '$KBUFFER'"
 	>&2 print_sar_summary
-  exit 9
+  exit 8
 }
 [ $(expr "x$KBCACHE" : "x[0-9]*$") -gt 0 ] || {
 	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBCACHE '$KBCACHE'"
 	>&2 print_sar_summary
-  exit 9
+  exit 8
 }
 [ $(expr "x$MEMFREE" : "x[0-9]*$") -gt 0 ] || {
 	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMFREE '$MEMFREE'"
 	>&2 print_sar_summary
-  exit 9
+  exit 8
 }
 
 #

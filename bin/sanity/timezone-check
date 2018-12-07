@@ -45,6 +45,14 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 #
 [ "$HELP_MODE" = "1" ] && {
 	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo 'arguments:'
+	echo "  <EXPECTED-TIMEZONE>"
+   echo "  The expected timezone name of the local php configuration."
+   echo ''
+   echo "options:"
+   echo "  --same-offset-ok"
+   echo "   Checks if system's timezone has the same UTC offset as the <EXPECTED-TIMEZONE> when its timezone name does not match."
+   echo ''
 	echo 'exit status meanings:'
 	echo '    3: system timezone name did not match expected timezone name'
 	echo "    6: system timezone name did not match expected timezone name nor did the system timezone's UTC offset match the expected timezone's UTC offset"
