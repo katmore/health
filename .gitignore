@@ -4,7 +4,6 @@
 /vendor/*
 /config/*
 !/config/**/*-sample.php
-!/config/**/*-BACKUP.php
 /web/phpinfo*.php
 /web/components/*
 /node_modules/*

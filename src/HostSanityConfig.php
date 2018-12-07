@@ -3,7 +3,7 @@ namespace Healthsvc;
 
 class HostSanityConfig extends ConfigController {
    
-   const DEFAULT_BIN_DIR = __DIR__.'/../bin/sanity';
+   const DEFAULT_BIN_DIR = __DIR__.'/../bin/host-sanity';
    
    public function getExec() : array {
       if (!is_array($exec = $this->getConfigVal('exec'))) {
