@@ -4,7 +4,7 @@
     <target>.phpdoc-parser</target>
   </parser>
   <transformer>
-    <target>docs/healthsvc</target>
+    <target>docs/phpdoc</target>
   </transformer>
   <transformations>
   		<template name="checkstyle"/>

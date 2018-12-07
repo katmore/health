@@ -13,7 +13,7 @@ ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR:-.}; ME_DIR=${ME_DIR#/}/; ME_
 #
 HTML_ROOT=$ME_DIR/web
 DOC_ROOT=$ME_DIR/docs
-PHPDOC_ROOT=$DOC_ROOT/$(basename $ME_DIR)
+PHPDOC_ROOT=$DOC_ROOT/phpdoc
 PHPDOC_SYMLINK=$HTML_ROOT/.phpdoc
 
 print_hint() {
@@ -77,7 +77,7 @@ if [ "$SKIP_PHPDOC" = "0" ]; then
       rm -f "$PHPDOC_SYMLINK"
       rm -f "$DOC_ROOT/structure.xml"
       rm -f "$DOC_ROOT/classes.svg"
-      rm -f "$DOC_ROOT/$(basename $ME_DIR).pdf"
+      rm -f "$DOC_ROOT/phpdoc.pdf"
    fi
    phpdoc "$@" || exit
 fi
@@ -125,7 +125,7 @@ if [ "$GENERATE_PDF" = "1" ]; then
         $DOC_ROOT/.pdf/$(basename $filename).pdf
    done
    
-   pdfunite $DOC_ROOT/.pdf/*.pdf $DOC_ROOT/$(basename $ME_DIR).pdf || {
+   pdfunite $DOC_ROOT/.pdf/*.pdf $DOC_ROOT/phpdoc.pdf || {
       >&2 echo "$ME_NAME: 'pdfunite' failed with exit status $?"
       exit 1
    }
@@ -133,7 +133,7 @@ if [ "$GENERATE_PDF" = "1" ]; then
    rm -rf $DOC_ROOT/.pdf
    mkdir -p $DOC_ROOT/.pdf
    
-   mv $DOC_ROOT/$(basename $ME_DIR).pdf $DOC_ROOT/.pdf/000.pdf
+   mv $DOC_ROOT/phpdoc.pdf $DOC_ROOT/.pdf/000.pdf
    
    for filename in $DOC_ROOT/.pdf-html/classes/*.html; do
       [ -e "$filename" ] || continue
@@ -145,7 +145,7 @@ if [ "$GENERATE_PDF" = "1" ]; then
         $DOC_ROOT/.pdf/$(basename $filename).pdf
    done
    
-   pdfunite $DOC_ROOT/.pdf/*.pdf $DOC_ROOT/$(basename $ME_DIR).pdf || {
+   pdfunite $DOC_ROOT/.pdf/*.pdf $DOC_ROOT/phpdoc.pdf || {
       >&2 echo "$ME_NAME: 'pdfunite' failed with exit status $?"
       exit 1
    }
@@ -153,7 +153,7 @@ if [ "$GENERATE_PDF" = "1" ]; then
    rm -rf $DOC_ROOT/.pdf
    rm -rf $DOC_ROOT/.pdf-html
    
-   echo "$ME_NAME: successfully generated '$DOC_ROOT/$(basename $ME_DIR).pdf'"
+   echo "$ME_NAME: successfully generated '$DOC_ROOT/phpdoc.pdf'"
 
 fi
 
@@ -163,7 +163,7 @@ if [ "$GENERATE_MD" = "1" ]; then
       >&2 echo "$ME_NAME: --generate-md failed because the command 'html2markdown' is missing"
    }
    
-   > "$DOC_ROOT/.$(basename $ME_DIR).md"
+   > "$DOC_ROOT/.phpdoc.md"
    
    rm -rf $DOC_ROOT/.md-html
    cp -rp $PHPDOC_ROOT $DOC_ROOT/.md-html
@@ -171,27 +171,27 @@ if [ "$GENERATE_MD" = "1" ]; then
    
    for filename in $DOC_ROOT/.md-html/namespaces/*.html; do
       [ -e "$filename" ] || continue
-      #html2text -style pretty "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
-      html2markdown --mark-code --ignore-links "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
+      #html2text -style pretty "$filename" >> "$DOC_ROOT/.phpdoc.md"
+      html2markdown --mark-code --ignore-links "$filename" >> "$DOC_ROOT/.phpdoc.md"
    done
    
    for filename in $DOC_ROOT/.md-html/classes/*.html; do
       [ -e "$filename" ] || continue
-      #html2text -style pretty "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
-      html2markdown --ignore-links "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
+      #html2text -style pretty "$filename" >> "$DOC_ROOT/.phpdoc.md"
+      html2markdown --ignore-links "$filename" >> "$DOC_ROOT/.phpdoc.md"
    done
    
-   sed '/^$/N;/^\n$/D' "$DOC_ROOT/.$(basename $ME_DIR).md" > "$DOC_ROOT/..$(basename $ME_DIR).md"
+   sed '/^$/N;/^\n$/D' "$DOC_ROOT/.phpdoc.md" > "$DOC_ROOT/..phpdoc.md"
    
-   mv "$DOC_ROOT/..$(basename $ME_DIR).md" "$DOC_ROOT/.$(basename $ME_DIR).md"
+   mv "$DOC_ROOT/..phpdoc.md" "$DOC_ROOT/.phpdoc.md"
    
-   sed '1{/^$/d}' "$DOC_ROOT/.$(basename $ME_DIR).md" > "$DOC_ROOT/..$(basename $ME_DIR).md"
+   sed '1{/^$/d}' "$DOC_ROOT/.phpdoc.md" > "$DOC_ROOT/..phpdoc.md"
    
-   mv "$DOC_ROOT/..$(basename $ME_DIR).md" "$DOC_ROOT/.$(basename $ME_DIR).md" 
+   mv "$DOC_ROOT/..phpdoc.md" "$DOC_ROOT/.phpdoc.md" 
    
-   mv "$DOC_ROOT/.$(basename $ME_DIR).md" "$DOC_ROOT/$(basename $ME_DIR).md"
+   mv "$DOC_ROOT/.phpdoc.md" "$DOC_ROOT/phpdoc.md"
    
-   echo "$ME_NAME: successfully generated '$DOC_ROOT/$(basename $ME_DIR).md'"
+   echo "$ME_NAME: successfully generated '$DOC_ROOT/phpdoc.md'"
    
    rm -rf $DOC_ROOT/.md-html
 fi
