@@ -9,4 +9,5 @@
 /node_modules/*
 selenium*
 geckodriver
+phpdoc.xml
 !/**/.gitkeep
