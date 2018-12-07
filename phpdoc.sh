@@ -178,7 +178,7 @@ if [ "$GENERATE_MD" = "1" ]; then
    for filename in $DOC_ROOT/.md-html/classes/*.html; do
       [ -e "$filename" ] || continue
       #html2text -style pretty "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
-      html2markdown --mark-code --ignore-links "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
+      html2markdown --ignore-links "$filename" >> "$DOC_ROOT/.$(basename $ME_DIR).md"
    done
    
    sed '/^$/N;/^\n$/D' "$DOC_ROOT/.$(basename $ME_DIR).md" > "$DOC_ROOT/..$(basename $ME_DIR).md"

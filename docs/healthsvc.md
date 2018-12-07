@@ -274,10 +274,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -298,10 +297,9 @@ _None found_
 
 ### $stdout
 
-[code]
-
+    
+    
     $stdout : 
-[/code]
 
 __
 
@@ -322,10 +320,9 @@ _None found_
   
 ### $stderr
 
-[code]
-
+    
+    
     $stderr : 
-[/code]
 
 __
 
@@ -344,10 +341,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getStdout() 
-[/code]
 
 __
 
@@ -368,10 +364,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $stdout, \Healthsvc\string  $stderr) 
-[/code]
 
 __
 
@@ -392,10 +387,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -420,10 +414,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -444,10 +437,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -472,10 +464,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getStderr() 
-[/code]
 
 __
 
@@ -490,10 +481,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -514,10 +504,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -538,10 +527,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -568,10 +556,6 @@ _None found_
 ×
 
 ### CommandErrorInfoItem.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -683,10 +667,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -707,10 +690,9 @@ _None found_
 
 ### $stdout
 
-[code]
-
+    
+    
     $stdout : 
-[/code]
 
 __
 
@@ -729,10 +711,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -757,10 +738,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -781,10 +761,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -809,10 +788,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getStdout() 
-[/code]
 
 __
 
@@ -827,10 +805,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $stdout) 
-[/code]
 
 __
 
@@ -850,10 +827,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -874,10 +850,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -898,10 +873,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -928,10 +902,6 @@ _None found_
 ×
 
 ### CommandInfoItem.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -1034,10 +1004,9 @@ _None found_
 
 ### $config
 
-[code]
-
+    
+    
     $config : array
-[/code]
 
 __
 
@@ -1058,10 +1027,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     __construct(array   $config = null) 
-[/code]
 
 __
 
@@ -1083,10 +1051,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getConfigVal(\Healthsvc\string   $key) 
-[/code]
 
 __
 
@@ -1105,10 +1072,6 @@ _None found_
 ×
 
 ### ConfigController.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -1210,10 +1173,9 @@ _None found_
 
 ### $config
 
-[code]
-
+    
+    
     $config : 
-[/code]
 
 __
 
@@ -1232,10 +1194,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getConfig() 
-[/code]
 
 __
 
@@ -1256,10 +1217,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setConfigFile(\Healthsvc\string   $config_file = null) 
-[/code]
 
 __
 
@@ -1284,10 +1244,6 @@ _None found_
 ×
 
 ### ConfigFileReaderTrait.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -1399,10 +1355,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -1423,10 +1378,9 @@ _None found_
 
 ### $message
 
-[code]
-
+    
+    
     $message : 
-[/code]
 
 __
 
@@ -1445,10 +1399,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -1473,10 +1426,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -1497,10 +1449,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -1525,10 +1476,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getMessage() 
-[/code]
 
 __
 
@@ -1543,10 +1493,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $message) 
-[/code]
 
 __
 
@@ -1566,10 +1515,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -1590,10 +1538,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -1614,10 +1561,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -1644,10 +1590,6 @@ _None found_
 ×
 
 ### ErrorInfoItem.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -1751,10 +1693,9 @@ _None found_
 
 ### $binDir
 
-[code]
-
+    
+    
     $binDir : 
-[/code]
 
 __
 
@@ -1773,10 +1714,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getBinDir() 
-[/code]
 
 __
 
@@ -1791,10 +1731,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $bin_dir) 
-[/code]
 
 __
 
@@ -1813,10 +1752,6 @@ _None found_
 ×
 
 ### HostSanityBinDirNotExistException.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -1924,10 +1859,9 @@ _None found_
 
 ### DEFAULT_BIN_DIR
 
-[code]
-
+    
+    
     DEFAULT_BIN_DIR
-[/code]
 
 __
 
@@ -1942,10 +1876,9 @@ _None found_
 
 ### $config
 
-[code]
-
+    
+    
     $config : array
-[/code]
 
 __
 
@@ -1972,10 +1905,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     __construct(array   $config = null) 
-[/code]
 
 __
 
@@ -2003,10 +1935,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getExec() 
-[/code]
 
 __
 
@@ -2021,10 +1952,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getWarnExitStatus() 
-[/code]
 
 __
 
@@ -2039,10 +1969,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getBin() 
-[/code]
 
 __
 
@@ -2057,10 +1986,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getBinDir() 
-[/code]
 
 __
 
@@ -2075,10 +2003,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getConfigVal(\Healthsvc\string   $key) 
-[/code]
 
 __
 
@@ -2103,10 +2030,6 @@ _None found_
 ×
 
 ### HostSanityConfig.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -2208,10 +2131,9 @@ _None found_
 
 ### $statusData
 
-[code]
-
+    
+    
     $statusData : \Healthsvc\HostSanityStatusData
-[/code]
 
 __
 
@@ -2232,10 +2154,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     getStatusData() : \Healthsvc\HostSanityStatusData
-[/code]
 
 __
 
@@ -2254,10 +2175,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(array   $exec, array  $warn_exit_status, array  $bin, \Healthsvc\string  $bin_dir) 
-[/code]
 
 __
 
@@ -2280,10 +2200,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     exec(\Healthsvc\string   $cmd,   $stdout = "",   $stderr = "") 
-[/code]
 
 __
 
@@ -2306,10 +2225,6 @@ _None found_
 ×
 
 ### HostSanityController.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -2424,10 +2339,9 @@ _None found_
 
 ### ALLOWED_METHODS
 
-[code]
-
+    
+    
     ALLOWED_METHODS
-[/code]
 
 __
 
@@ -2442,10 +2356,9 @@ _None found_
 
 ### $requestMethod
 
-[code]
-
+    
+    
     $requestMethod : 
-[/code]
 
 __
 
@@ -2466,10 +2379,9 @@ _None found_
   
 ### $requestQuery
 
-[code]
-
+    
+    
     $requestQuery : 
-[/code]
 
 __
 
@@ -2490,10 +2402,9 @@ _None found_
   
 ### $requestBody
 
-[code]
-
+    
+    
     $requestBody : 
-[/code]
 
 __
 
@@ -2514,10 +2425,9 @@ _None found_
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : 
-[/code]
 
 __
 
@@ -2538,10 +2448,9 @@ _None found_
   
 ### $requestData
 
-[code]
-
+    
+    
     $requestData : 
-[/code]
 
 __
 
@@ -2566,10 +2475,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     isRequestMethodAllowed() 
-[/code]
 
 __
 
@@ -2584,10 +2492,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestQuery() 
-[/code]
 
 __
 
@@ -2608,10 +2515,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestMethod() 
-[/code]
 
 __
 
@@ -2632,10 +2538,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $request_method = null, array  $request_query = null, \Healthsvc\string  $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -2670,10 +2575,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestBody() 
-[/code]
 
 __
 
@@ -2694,10 +2598,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() 
-[/code]
 
 __
 
@@ -2718,10 +2621,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestData() 
-[/code]
 
 __
 
@@ -2742,10 +2644,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setRequestBody(\Healthsvc\string   $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -2771,10 +2672,6 @@ _None found_
 ×
 
 ### HostSanityRequest.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -2885,10 +2782,9 @@ _None found_
 
 ### $config
 
-[code]
-
+    
+    
     $config : \Healthsvc\HostSanityConfig
-[/code]
 
 __
 
@@ -2905,10 +2801,9 @@ _None found_
   
 ### $requestMethod
 
-[code]
-
+    
+    
     $requestMethod : 
-[/code]
 
 __
 
@@ -2923,10 +2818,9 @@ _None found_
   
 ### $requestQuery
 
-[code]
-
+    
+    
     $requestQuery : 
-[/code]
 
 __
 
@@ -2941,10 +2835,9 @@ _None found_
   
 ### $requestBody
 
-[code]
-
+    
+    
     $requestBody : 
-[/code]
 
 __
 
@@ -2959,10 +2852,9 @@ _None found_
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : 
-[/code]
 
 __
 
@@ -2981,10 +2873,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $config_file = null, \Healthsvc\string  $request_method = null, array  $request_query = null, \Healthsvc\string  $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -3008,10 +2899,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequest() 
-[/code]
 
 __
 
@@ -3032,10 +2922,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponse() 
-[/code]
 
 __
 
@@ -3056,10 +2945,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(\Healthsvc\bool   $send_headers = true) 
-[/code]
 
 __
 
@@ -3079,10 +2967,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getConfig() 
-[/code]
 
 __
 
@@ -3103,10 +2990,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setConfigFile(\Healthsvc\string   $config_file = null) 
-[/code]
 
 __
 
@@ -3131,10 +3017,6 @@ _None found_
 ×
 
 ### HostSanityRequestResponseController.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -3254,10 +3136,9 @@ _None found_
 
 ### JSON_CONTENT_TYPE
 
-[code]
-
+    
+    
     JSON_CONTENT_TYPE
-[/code]
 
 __
 
@@ -3276,10 +3157,9 @@ _None found_
   
 ### RESPONSE_CODE_HAS_WARN_NO_FAILURE
 
-[code]
-
+    
+    
     RESPONSE_CODE_HAS_WARN_NO_FAILURE
-[/code]
 
 __
 
@@ -3292,10 +3172,9 @@ _None found_
   
 ### RESPONSE_CODE_HAS_FAILURE
 
-[code]
-
+    
+    
     RESPONSE_CODE_HAS_FAILURE
-[/code]
 
 __
 
@@ -3308,10 +3187,9 @@ _None found_
   
 ### RESPONSE_CODE_HAS_NO_TESTS
 
-[code]
-
+    
+    
     RESPONSE_CODE_HAS_NO_TESTS
-[/code]
 
 __
 
@@ -3324,10 +3202,9 @@ _None found_
   
 ### RESPONSE_CODE_ALL_SUCCESS
 
-[code]
-
+    
+    
     RESPONSE_CODE_ALL_SUCCESS
-[/code]
 
 __
 
@@ -3342,10 +3219,9 @@ _None found_
 
 ### $hasResponseData
 
-[code]
-
+    
+    
     $hasResponseData : boolean
-[/code]
 
 __
 
@@ -3369,10 +3245,9 @@ private  |
   
 ### $responseData
 
-[code]
-
+    
+    
     $responseData : array
-[/code]
 
 __
 
@@ -3395,10 +3270,9 @@ private  |
   
 ### $responseBody
 
-[code]
-
+    
+    
     $responseBody : string
-[/code]
 
 __
 
@@ -3421,10 +3295,9 @@ private  |
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : string
-[/code]
 
 __
 
@@ -3447,10 +3320,9 @@ private  |
   
 ### $responseCode
 
-[code]
-
+    
+    
     $responseCode : integer
-[/code]
 
 __
 
@@ -3477,10 +3349,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     getResponseCode() : integer
-[/code]
 
 __
 
@@ -3509,10 +3380,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasResponseData() : boolean
-[/code]
 
 __
 
@@ -3542,10 +3412,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseData() : array
-[/code]
 
 __
 
@@ -3574,10 +3443,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() : string
-[/code]
 
 __
 
@@ -3606,10 +3474,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseBody() : string
-[/code]
 
 __
 
@@ -3638,10 +3505,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(boolean   $send_headers = true) : void
-[/code]
 
 _Prints the response body. Additionaly sends the appropriate HTTP headers
 unless <b>$send_headers</b> is <i>false</i>._
@@ -3673,10 +3539,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\HostSanityStatusData   $status) 
-[/code]
 
 __
 
@@ -3696,10 +3561,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setResponseBody(\Healthsvc\string   $response_body, \Healthsvc\string  $content_type, \Healthsvc\int  $response_code = 200) 
-[/code]
 
 __
 
@@ -3729,10 +3593,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setResponseData(array   $response_data, \Healthsvc\int  $response_code = 200) 
-[/code]
 
 __
 
@@ -3760,10 +3623,6 @@ _None found_
 ×
 
 ### HostSanityResponse.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -3904,10 +3763,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -3928,10 +3786,9 @@ _None found_
 
 ### $message
 
-[code]
-
+    
+    
     $message : string
-[/code]
 
 __
 
@@ -3954,10 +3811,9 @@ private  |
   
 ### $healthStatusTime
 
-[code]
-
+    
+    
     $healthStatusTime : string
-[/code]
 
 __
 
@@ -3980,10 +3836,9 @@ private  |
   
 ### $healthStatusTtl
 
-[code]
-
+    
+    
     $healthStatusTtl : integer
-[/code]
 
 __
 
@@ -4006,10 +3861,9 @@ private  |
   
 ### $healthInfo
 
-[code]
-
+    
+    
     $healthInfo : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4033,10 +3887,9 @@ private  |
   
 ### $execExitStatus
 
-[code]
-
+    
+    
     $execExitStatus : array<mixed,integer>
-[/code]
 
 __
 
@@ -4060,10 +3913,9 @@ private  |
   
 ### $healthSuccess
 
-[code]
-
+    
+    
     $healthSuccess : array<mixed,string>
-[/code]
 
 __
 
@@ -4086,10 +3938,9 @@ private  |
   
 ### $healthWarn
 
-[code]
-
+    
+    
     $healthWarn : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4113,10 +3964,9 @@ private  |
   
 ### $healthFailure
 
-[code]
-
+    
+    
     $healthFailure : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4140,10 +3990,9 @@ private  |
   
 ### $hostname
 
-[code]
-
+    
+    
     $hostname : string
-[/code]
 
 __
 
@@ -4164,10 +4013,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     hasNoTests() 
-[/code]
 
 __
 
@@ -4188,10 +4036,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyTest() 
-[/code]
 
 __
 
@@ -4212,10 +4059,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthStatusTime() : string
-[/code]
 
 __
 
@@ -4242,10 +4088,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthStatusTtl() : integer
-[/code]
 
 __
 
@@ -4272,10 +4117,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthInfo() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4303,10 +4147,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getExecExitStatus() : array<mixed,integer>
-[/code]
 
 __
 
@@ -4334,10 +4177,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthSuccess() : array<mixed,string>
-[/code]
 
 __
 
@@ -4364,10 +4206,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthWarn() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4395,10 +4236,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthFailure() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -4426,10 +4266,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getMessage() : string
-[/code]
 
 __
 
@@ -4456,10 +4295,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setExecExitStatus(\Healthsvc\string   $label, \Healthsvc\int  $exit_status) 
-[/code]
 
 __
 
@@ -4486,10 +4324,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthFailure(\Healthsvc\string   $label, \Healthsvc\InfoItem  $health_failure) 
-[/code]
 
 __
 
@@ -4516,10 +4353,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthWarn(\Healthsvc\string   $label, \Healthsvc\InfoItem  $health_warn) 
-[/code]
 
 __
 
@@ -4546,10 +4382,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAllHealthSuccess() 
-[/code]
 
 __
 
@@ -4570,10 +4405,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyHealthFailure() 
-[/code]
 
 __
 
@@ -4594,10 +4428,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyHealthWarn() 
-[/code]
 
 __
 
@@ -4618,10 +4451,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasExecExitStatus(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -4647,10 +4479,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasHealthFailure(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -4676,10 +4507,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     moveHealthFailureToWarn(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -4705,10 +4535,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthSuccess(\Healthsvc\string   $label, \Healthsvc\InfoItem  $success_info = null) 
-[/code]
 
 __
 
@@ -4735,10 +4564,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\int   $healthStatusTtl, \Healthsvc\string  $healthStatusTime = null, \Healthsvc\string  $hostname = "") 
-[/code]
 
 __
 
@@ -4760,10 +4588,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -4788,10 +4615,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -4812,10 +4638,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -4840,10 +4665,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHostname() : string
-[/code]
 
 __
 
@@ -4864,10 +4688,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     refreshMessage() 
-[/code]
 
 __
 
@@ -4888,10 +4711,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -4912,10 +4734,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -4936,10 +4757,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -4966,10 +4786,6 @@ _None found_
 ×
 
 ### HostSanityStatusData.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -5079,10 +4895,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -5105,10 +4920,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -5133,10 +4947,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -5157,10 +4970,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -5185,10 +4997,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -5209,10 +5020,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -5233,10 +5043,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -5263,10 +5072,6 @@ _None found_
 ×
 
 ### InfoItem.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -5385,10 +5190,9 @@ _None found_
 
 ### $requestBody
 
-[code]
-
+    
+    
     $requestBody : 
-[/code]
 
 __
 
@@ -5409,10 +5213,9 @@ _None found_
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : 
-[/code]
 
 __
 
@@ -5433,10 +5236,9 @@ _None found_
   
 ### $requestData
 
-[code]
-
+    
+    
     $requestData : 
-[/code]
 
 __
 
@@ -5457,10 +5259,9 @@ _None found_
   
 ### $requestMethod
 
-[code]
-
+    
+    
     $requestMethod : 
-[/code]
 
 __
 
@@ -5475,10 +5276,9 @@ _None found_
   
 ### $requestQuery
 
-[code]
-
+    
+    
     $requestQuery : 
-[/code]
 
 __
 
@@ -5497,10 +5297,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestBody() 
-[/code]
 
 __
 
@@ -5521,10 +5320,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() 
-[/code]
 
 __
 
@@ -5545,10 +5343,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     isRequestMethodAllowed() 
-[/code]
 
 __
 
@@ -5565,10 +5362,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestQuery() 
-[/code]
 
 __
 
@@ -5583,10 +5379,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestMethod() 
-[/code]
 
 __
 
@@ -5601,10 +5396,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $request_method = null, array  $request_query = null, \Healthsvc\string  $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -5633,10 +5427,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestData() 
-[/code]
 
 __
 
@@ -5657,10 +5450,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setRequestBody(\Healthsvc\string   $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -5686,10 +5478,6 @@ _None found_
 ×
 
 ### Request.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -5794,10 +5582,9 @@ _None found_
 
 ### $requestBody
 
-[code]
-
+    
+    
     $requestBody : 
-[/code]
 
 __
 
@@ -5812,10 +5599,9 @@ _None found_
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : 
-[/code]
 
 __
 
@@ -5830,10 +5616,9 @@ _None found_
   
 ### $requestData
 
-[code]
-
+    
+    
     $requestData : 
-[/code]
 
 __
 
@@ -5852,10 +5637,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestBody() 
-[/code]
 
 __
 
@@ -5876,10 +5660,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() 
-[/code]
 
 __
 
@@ -5900,10 +5683,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestData() 
-[/code]
 
 __
 
@@ -5924,10 +5706,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setRequestBody(\Healthsvc\string   $request_body = null, \Healthsvc\string  $content_type = null) 
-[/code]
 
 __
 
@@ -5953,10 +5734,6 @@ _None found_
 ×
 
 ### RequestBodyParserTrait.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -6068,10 +5845,9 @@ _None found_
 
 ### RESPONSE_CODE
 
-[code]
-
+    
+    
     RESPONSE_CODE
-[/code]
 
 __
 
@@ -6084,10 +5860,9 @@ _None found_
   
 ### CONTENT_TYPE
 
-[code]
-
+    
+    
     CONTENT_TYPE
-[/code]
 
 __
 
@@ -6102,10 +5877,9 @@ _None found_
 
 ### $requestMethod
 
-[code]
-
+    
+    
     $requestMethod : string
-[/code]
 
 __
 
@@ -6126,10 +5900,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(\Healthsvc\bool   $send_headers = true) 
-[/code]
 
 __
 
@@ -6157,10 +5930,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseCode() 
-[/code]
 
 __
 
@@ -6175,10 +5947,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() 
-[/code]
 
 __
 
@@ -6193,10 +5964,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseBody() 
-[/code]
 
 __
 
@@ -6211,10 +5981,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequestMethod() 
-[/code]
 
 __
 
@@ -6229,10 +5998,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $request_method) 
-[/code]
 
 __
 
@@ -6251,10 +6019,6 @@ _None found_
 ×
 
 ### RequestMethodNotAllowedException.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -6372,10 +6136,9 @@ _None found_
 
 ### $config
 
-[code]
-
+    
+    
     $config : 
-[/code]
 
 __
 
@@ -6400,10 +6163,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $config_file = null) 
-[/code]
 
 __
 
@@ -6423,10 +6185,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getRequest() 
-[/code]
 
 __
 
@@ -6443,10 +6204,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponse() 
-[/code]
 
 __
 
@@ -6463,10 +6223,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getConfig() 
-[/code]
 
 __
 
@@ -6487,10 +6246,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setConfigFile(\Healthsvc\string   $config_file = null) 
-[/code]
 
 __
 
@@ -6515,10 +6273,6 @@ _None found_
 ×
 
 ### RequestResponseController.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -6639,10 +6393,9 @@ _None found_
 
 ### JSON_CONTENT_TYPE
 
-[code]
-
+    
+    
     JSON_CONTENT_TYPE
-[/code]
 
 __
 
@@ -6657,10 +6410,9 @@ _None found_
 
 ### $hasResponseData
 
-[code]
-
+    
+    
     $hasResponseData : boolean
-[/code]
 
 __
 
@@ -6678,10 +6430,9 @@ private  |
   
 ### $responseData
 
-[code]
-
+    
+    
     $responseData : array
-[/code]
 
 __
 
@@ -6698,10 +6449,9 @@ private  |
   
 ### $responseBody
 
-[code]
-
+    
+    
     $responseBody : string
-[/code]
 
 __
 
@@ -6718,10 +6468,9 @@ private  |
   
 ### $contentType
 
-[code]
-
+    
+    
     $contentType : string
-[/code]
 
 __
 
@@ -6738,10 +6487,9 @@ private  |
   
 ### $responseCode
 
-[code]
-
+    
+    
     $responseCode : integer
-[/code]
 
 __
 
@@ -6762,10 +6510,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     getResponseCode() : integer
-[/code]
 
 __
 
@@ -6788,10 +6535,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasResponseData() : boolean
-[/code]
 
 __
 
@@ -6815,10 +6561,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseData() : array
-[/code]
 
 __
 
@@ -6841,10 +6586,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() : string
-[/code]
 
 __
 
@@ -6867,10 +6611,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseBody() : string
-[/code]
 
 __
 
@@ -6893,10 +6636,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(boolean   $send_headers = true) : void
-[/code]
 
 _Prints the response body. Additionaly sends the appropriate HTTP headers
 unless <b>$send_headers</b> is <i>false</i>._
@@ -6922,10 +6664,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setResponseBody(\Healthsvc\string   $response_body, \Healthsvc\string  $content_type, \Healthsvc\int  $response_code = 200) 
-[/code]
 
 __
 
@@ -6949,10 +6690,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setResponseData(array   $response_data, \Healthsvc\int  $response_code = 200) 
-[/code]
 
 __
 
@@ -6974,10 +6714,6 @@ _None found_
 ×
 
 ### Response.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7073,10 +6809,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(\Healthsvc\bool   $send_headers = true) 
-[/code]
 
 __
 
@@ -7095,10 +6830,6 @@ _None found_
 ×
 
 ### ResponseBodyPrinterInterface.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7202,10 +6933,9 @@ _None found_
 
 ### $reason
 
-[code]
-
+    
+    
     $reason : 
-[/code]
 
 __
 
@@ -7224,10 +6954,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getReason() 
-[/code]
 
 __
 
@@ -7242,10 +6971,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\string   $reason) 
-[/code]
 
 __
 
@@ -7264,10 +6992,6 @@ _None found_
 ×
 
 ### ResponseDataInvalidException.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7380,10 +7104,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(\Healthsvc\bool   $send_headers = true) 
-[/code]
 
 __
 
@@ -7404,10 +7127,6 @@ _None found_
 ×
 
 ### ResponseException.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7512,10 +7231,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     printResponseBody(\Healthsvc\bool   $send_headers = true) 
-[/code]
 
 __
 
@@ -7541,10 +7259,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseCode() 
-[/code]
 
 __
 
@@ -7559,10 +7276,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getContentType() 
-[/code]
 
 __
 
@@ -7577,10 +7293,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getResponseBody() 
-[/code]
 
 __
 
@@ -7594,10 +7309,6 @@ _None found_
 ×
 
 ### ResponseInterface.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7709,10 +7420,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -7729,10 +7439,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -7751,10 +7460,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -7769,10 +7477,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -7791,10 +7498,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -7809,10 +7515,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -7827,10 +7532,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -7851,10 +7555,6 @@ _None found_
 ×
 
 ### SerializableData.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -7993,10 +7693,9 @@ _None found_
 
 ### PROPERTIES_TO_SNAKE_CASE
 
-[code]
-
+    
+    
     PROPERTIES_TO_SNAKE_CASE
-[/code]
 
 __
 
@@ -8017,10 +7716,9 @@ _None found_
 
 ### $message
 
-[code]
-
+    
+    
     $message : string
-[/code]
 
 __
 
@@ -8037,10 +7735,9 @@ private  |
   
 ### $healthStatusTime
 
-[code]
-
+    
+    
     $healthStatusTime : string
-[/code]
 
 __
 
@@ -8057,10 +7754,9 @@ private  |
   
 ### $healthStatusTtl
 
-[code]
-
+    
+    
     $healthStatusTtl : integer
-[/code]
 
 __
 
@@ -8077,10 +7773,9 @@ private  |
   
 ### $healthInfo
 
-[code]
-
+    
+    
     $healthInfo : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8098,10 +7793,9 @@ private  |
   
 ### $execExitStatus
 
-[code]
-
+    
+    
     $execExitStatus : array<mixed,integer>
-[/code]
 
 __
 
@@ -8119,10 +7813,9 @@ private  |
   
 ### $healthSuccess
 
-[code]
-
+    
+    
     $healthSuccess : array<mixed,string>
-[/code]
 
 __
 
@@ -8139,10 +7832,9 @@ private  |
   
 ### $healthWarn
 
-[code]
-
+    
+    
     $healthWarn : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8160,10 +7852,9 @@ private  |
   
 ### $healthFailure
 
-[code]
-
+    
+    
     $healthFailure : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8185,10 +7876,9 @@ private  |
 
 __
 
-[code]
-
+    
+    
     jsonSerialize() 
-[/code]
 
 _Part of the JsonSerializable interface_
 
@@ -8213,10 +7903,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSerializedArray() 
-[/code]
 
 __
 
@@ -8237,10 +7926,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toArray() : array
-[/code]
 
 _Provides an assoc array corresponding to this response data item_
 
@@ -8265,10 +7953,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasNoTests() 
-[/code]
 
 __
 
@@ -8283,10 +7970,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyTest() 
-[/code]
 
 __
 
@@ -8301,10 +7987,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthStatusTime() : string
-[/code]
 
 __
 
@@ -8325,10 +8010,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthStatusTtl() : integer
-[/code]
 
 __
 
@@ -8349,10 +8033,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthInfo() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8374,10 +8057,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getExecExitStatus() : array<mixed,integer>
-[/code]
 
 __
 
@@ -8399,10 +8081,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthSuccess() : array<mixed,string>
-[/code]
 
 __
 
@@ -8423,10 +8104,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthWarn() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8448,10 +8128,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getHealthFailure() : array<mixed,\Healthsvc\InfoItem>
-[/code]
 
 __
 
@@ -8473,10 +8152,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getMessage() : string
-[/code]
 
 __
 
@@ -8497,10 +8175,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setExecExitStatus(\Healthsvc\string   $label, \Healthsvc\int  $exit_status) 
-[/code]
 
 __
 
@@ -8521,10 +8198,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthFailure(\Healthsvc\string   $label, \Healthsvc\InfoItem  $health_failure) 
-[/code]
 
 __
 
@@ -8545,10 +8221,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthWarn(\Healthsvc\string   $label, \Healthsvc\InfoItem  $health_warn) 
-[/code]
 
 __
 
@@ -8569,10 +8244,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAllHealthSuccess() 
-[/code]
 
 __
 
@@ -8587,10 +8261,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyHealthFailure() 
-[/code]
 
 __
 
@@ -8605,10 +8278,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasAnyHealthWarn() 
-[/code]
 
 __
 
@@ -8623,10 +8295,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasExecExitStatus(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -8646,10 +8317,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     hasHealthFailure(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -8669,10 +8339,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     moveHealthFailureToWarn(\Healthsvc\string   $label) 
-[/code]
 
 __
 
@@ -8692,10 +8361,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     setHealthSuccess(\Healthsvc\string   $label, \Healthsvc\InfoItem  $success_info = null) 
-[/code]
 
 __
 
@@ -8716,10 +8384,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     __construct(\Healthsvc\int   $health_staus_ttl, \Healthsvc\string  $health_status_time = null) 
-[/code]
 
 __
 
@@ -8740,10 +8407,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableProperties() 
-[/code]
 
 __
 
@@ -8764,10 +8430,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getSerializableValues() 
-[/code]
 
 __
 
@@ -8788,10 +8453,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     toSnakeCase(\Healthsvc\string   $input) 
-[/code]
 
 __
 
@@ -8819,10 +8483,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     refreshMessage() 
-[/code]
 
 __
 
@@ -8836,10 +8499,6 @@ _None found_
 ×
 
 ### StatusData.php
-
-[/code]
-
-[code]
 
 # __
 
@@ -8935,10 +8594,9 @@ _None found_
 
 __
 
-[code]
-
+    
+    
     getStatusData() 
-[/code]
 
 __
 
@@ -8952,10 +8610,6 @@ _None found_
 ×
 
 ### StatusDataProviderInterface.php
-
-[/code]
-
-[code]
 
 # __
 
