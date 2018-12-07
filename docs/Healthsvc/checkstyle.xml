@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<checkstyle version="1.3.0">
+  <file name="HostSanityRequest.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityRequest" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="6" severity="error" message="No summary for method isRequestMethodAllowed()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="HostSanityResponse.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityResponse" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="10" severity="error" message="Argument $status is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="10" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="InfoItem.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\InfoItem" source="phpDocumentor.file.PPC:ERR-50005"/>
+  </file>
+  <file name="Response.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\Response" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="36" severity="error" message="No summary for method getResponseCode()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="42" severity="error" message="No summary for method hasResponseData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="48" severity="error" message="No summary for method getResponseData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="54" severity="error" message="No summary for method getContentType()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="60" severity="error" message="No summary for method getResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="75" severity="error" message="Argument $response_body is missing from the Docblock of setResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="75" severity="error" message="Argument $content_type is missing from the Docblock of setResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="75" severity="error" message="Argument $response_code is missing from the Docblock of setResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="75" severity="error" message="No summary for method setResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="81" severity="error" message="Argument $response_data is missing from the Docblock of setResponseData" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="81" severity="error" message="Argument $response_code is missing from the Docblock of setResponseData" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="81" severity="error" message="No summary for method setResponseData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ResponseBodyPrinterInterface.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for interface \Healthsvc\ResponseBodyPrinterInterface" source="phpDocumentor.file.PPC:ERR-50009"/>
+    <error line="5" severity="error" message="Argument $send_headers is missing from the Docblock of printResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="5" severity="error" message="No summary for method printResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ResponseDataInvalidException.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="6" severity="error" message="No summary for class \Healthsvc\ResponseDataInvalidException" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="No summary for method getReason()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="11" severity="error" message="Argument $reason is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="11" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="10" severity="error" message="No summary for property $reason" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="Request.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\Request" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="11" severity="error" message="No summary for method isRequestMethodAllowed()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="13" severity="error" message="No summary for method getRequestQuery()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="17" severity="error" message="No summary for method getRequestMethod()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="25" severity="error" message="Argument $request_method is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="25" severity="error" message="Argument $request_query is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="25" severity="error" message="Argument $request_body is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="25" severity="error" message="Argument $content_type is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="25" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="8" severity="error" message="No summary for property $requestMethod" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="9" severity="error" message="No summary for property $requestQuery" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="HostSanityConfig.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityConfig" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="8" severity="error" message="No summary for method getExec()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="15" severity="error" message="No summary for method getWarnExitStatus()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="22" severity="error" message="No summary for method getBin()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="29" severity="error" message="No summary for method getBinDir()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="HostSanityStatusData.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityStatusData" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="15" severity="error" message="No summary for method getHostname()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="19" severity="error" message="Argument $healthStatusTtl is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="19" severity="error" message="Argument $healthStatusTime is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="19" severity="error" message="Argument $hostname is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="19" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="RequestResponseController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\RequestResponseController" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="6" severity="error" message="Argument $config_file is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="6" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="9" severity="error" message="No summary for method getRequest()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="10" severity="error" message="No summary for method getResponse()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="HostSanityController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityController" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="6" severity="error" message="Argument $cmd is missing from the Docblock of exec" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="6" severity="error" message="Argument $stdout is missing from the Docblock of exec" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="6" severity="error" message="Argument $stderr is missing from the Docblock of exec" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="6" severity="error" message="No summary for method exec()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="43" severity="error" message="No summary for method getStatusData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="47" severity="error" message="Argument $exec is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="Argument $warn_exit_status is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="Argument $bin is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="Argument $bin_dir is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="38" severity="error" message="No summary for property $statusData" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="StatusDataProviderInterface.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for interface \Healthsvc\StatusDataProviderInterface" source="phpDocumentor.file.PPC:ERR-50009"/>
+    <error line="5" severity="error" message="No summary for method getStatusData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="RequestMethodNotAllowedException.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\RequestMethodNotAllowedException" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="14" severity="error" message="No summary for method getResponseCode()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="18" severity="error" message="No summary for method getContentType()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="22" severity="error" message="No summary for method getResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="26" severity="error" message="No summary for method getRequestMethod()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="30" severity="error" message="Argument $request_method is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="30" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ResponseInterface.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for interface \Healthsvc\ResponseInterface" source="phpDocumentor.file.PPC:ERR-50009"/>
+    <error line="5" severity="error" message="No summary for method getResponseCode()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="6" severity="error" message="No summary for method getContentType()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="7" severity="error" message="No summary for method getResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="HostSanityRequestResponseController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\HostSanityRequestResponseController" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="14" severity="error" message="No summary for method getRequest()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="21" severity="error" message="No summary for method getResponse()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="31" severity="error" message="Argument $send_headers is missing from the Docblock of printResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="31" severity="error" message="No summary for method printResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="45" severity="error" message="Argument $config_file is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="45" severity="error" message="Argument $request_method is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="45" severity="error" message="Argument $request_query is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="45" severity="error" message="Argument $request_body is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="45" severity="error" message="Argument $content_type is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="45" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="9" severity="error" message="No summary for property $config" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="40" severity="error" message="No summary for property $requestMethod" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="41" severity="error" message="No summary for property $requestQuery" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="42" severity="error" message="No summary for property $requestBody" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="43" severity="error" message="No summary for property $contentType" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="HostSanityBinDirNotExistException.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="6" severity="error" message="No summary for class \Healthsvc\HostSanityBinDirNotExistException" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="No summary for method getBinDir()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="11" severity="error" message="Argument $bin_dir is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="11" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="10" severity="error" message="No summary for property $binDir" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="CommandInfoItem.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\CommandInfoItem" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="No summary for method getStdout()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="11" severity="error" message="Argument $stdout is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="11" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="5" severity="error" message="No summary for property $stdout" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="StatusData.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\StatusData" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="54" severity="error" message="No summary for method refreshMessage()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="73" severity="error" message="No summary for method hasNoTests()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="77" severity="error" message="No summary for method hasAnyTest()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="84" severity="error" message="No summary for method getHealthStatusTime()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="91" severity="error" message="No summary for method getHealthStatusTtl()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="98" severity="error" message="No summary for method getHealthInfo()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="105" severity="error" message="No summary for method getExecExitStatus()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="112" severity="error" message="No summary for method getHealthSuccess()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="119" severity="error" message="No summary for method getHealthWarn()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="126" severity="error" message="No summary for method getHealthFailure()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="133" severity="error" message="No summary for method getMessage()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="137" severity="error" message="Argument $label is missing from the Docblock of setExecExitStatus" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="137" severity="error" message="Argument $exit_status is missing from the Docblock of setExecExitStatus" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="137" severity="error" message="No summary for method setExecExitStatus()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="142" severity="error" message="Argument $label is missing from the Docblock of setHealthFailure" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="142" severity="error" message="Argument $health_failure is missing from the Docblock of setHealthFailure" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="142" severity="error" message="No summary for method setHealthFailure()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="147" severity="error" message="Argument $label is missing from the Docblock of setHealthWarn" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="147" severity="error" message="Argument $health_warn is missing from the Docblock of setHealthWarn" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="147" severity="error" message="No summary for method setHealthWarn()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="152" severity="error" message="No summary for method hasAllHealthSuccess()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="159" severity="error" message="No summary for method hasAnyHealthFailure()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="163" severity="error" message="No summary for method hasAnyHealthWarn()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="167" severity="error" message="Argument $label is missing from the Docblock of hasExecExitStatus" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="167" severity="error" message="No summary for method hasExecExitStatus()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="172" severity="error" message="Argument $label is missing from the Docblock of hasHealthFailure" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="172" severity="error" message="No summary for method hasHealthFailure()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="177" severity="error" message="Argument $label is missing from the Docblock of moveHealthFailureToWarn" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="177" severity="error" message="No summary for method moveHealthFailureToWarn()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="187" severity="error" message="Argument $label is missing from the Docblock of setHealthSuccess" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="187" severity="error" message="Argument $success_info is missing from the Docblock of setHealthSuccess" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="187" severity="error" message="No summary for method setHealthSuccess()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="193" severity="error" message="Argument $health_staus_ttl is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="193" severity="error" message="Argument $health_status_time is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="193" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="SerializableData.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="7" severity="error" message="No summary for class \Healthsvc\SerializableData" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="11" severity="error" message="No summary for method getSerializableProperties()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="20" severity="error" message="No summary for method getSerializableValues()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="24" severity="error" message="Argument $input is missing from the Docblock of toSnakeCase" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="24" severity="error" message="No summary for method toSnakeCase()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="64" severity="error" message="No summary for method toSerializedArray()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="CommandErrorInfoItem.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\CommandErrorInfoItem" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="No summary for method getStderr()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="11" severity="error" message="Argument $stdout is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="11" severity="error" message="Argument $stderr is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="11" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="5" severity="error" message="No summary for property $stderr" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ConfigFileReaderTrait.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for trait \Healthsvc\ConfigFileReaderTrait" source="phpDocumentor.file.PPC:ERR-50010"/>
+    <error line="6" severity="error" message="No summary for method getConfig()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="9" severity="error" message="Argument $config_file is missing from the Docblock of setConfigFile" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="9" severity="error" message="No summary for method setConfigFile()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="5" severity="error" message="No summary for property $config" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="RequestBodyParserTrait.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for trait \Healthsvc\RequestBodyParserTrait" source="phpDocumentor.file.PPC:ERR-50010"/>
+    <error line="9" severity="error" message="No summary for method getRequestBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="13" severity="error" message="No summary for method getContentType()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="17" severity="error" message="No summary for method getRequestData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="21" severity="error" message="Argument $request_body is missing from the Docblock of setRequestBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="21" severity="error" message="Argument $content_type is missing from the Docblock of setRequestBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="21" severity="error" message="No summary for method setRequestBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="5" severity="error" message="No summary for property $requestBody" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="6" severity="error" message="No summary for property $contentType" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="7" severity="error" message="No summary for property $requestData" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ErrorInfoItem.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\ErrorInfoItem" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="6" severity="error" message="No summary for method getMessage()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="10" severity="error" message="Argument $message is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="10" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="5" severity="error" message="No summary for property $message" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ResponseException.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="6" severity="error" message="No summary for class \Healthsvc\ResponseException" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="Argument $send_headers is missing from the Docblock of printResponseBody" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="7" severity="error" message="No summary for method printResponseBody()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ConfigController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \Healthsvc\ConfigController" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="12" severity="error" message="Argument $key is missing from the Docblock of getConfigVal" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="12" severity="error" message="No summary for method getConfigVal()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="17" severity="error" message="Argument $config is missing from the Docblock of __construct" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="17" severity="error" message="No summary for method __construct()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="10" severity="error" message="No summary for property $config" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+</checkstyle>
