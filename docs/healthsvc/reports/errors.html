@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; Compilation errors
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Healthsvc.html">\Healthsvc</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">207</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>
+                                                                            <li><a href="#HostSanityRequest.php"><i class="icon-file"></i> HostSanityRequest.php</a></li>
+                                                                                                    <li><a href="#HostSanityResponse.php"><i class="icon-file"></i> HostSanityResponse.php</a></li>
+                                                                                                    <li><a href="#InfoItem.php"><i class="icon-file"></i> InfoItem.php</a></li>
+                                                                                                    <li><a href="#Response.php"><i class="icon-file"></i> Response.php</a></li>
+                                                                                                    <li><a href="#ResponseBodyPrinterInterface.php"><i class="icon-file"></i> ResponseBodyPrinterInterface.php</a></li>
+                                                                                                    <li><a href="#ResponseDataInvalidException.php"><i class="icon-file"></i> ResponseDataInvalidException.php</a></li>
+                                                                                                    <li><a href="#Request.php"><i class="icon-file"></i> Request.php</a></li>
+                                                                                                    <li><a href="#HostSanityConfig.php"><i class="icon-file"></i> HostSanityConfig.php</a></li>
+                                                                                                    <li><a href="#HostSanityStatusData.php"><i class="icon-file"></i> HostSanityStatusData.php</a></li>
+                                                                                                    <li><a href="#RequestResponseController.php"><i class="icon-file"></i> RequestResponseController.php</a></li>
+                                                                                                    <li><a href="#HostSanityController.php"><i class="icon-file"></i> HostSanityController.php</a></li>
+                                                                                                    <li><a href="#StatusDataProviderInterface.php"><i class="icon-file"></i> StatusDataProviderInterface.php</a></li>
+                                                                                                    <li><a href="#RequestMethodNotAllowedException.php"><i class="icon-file"></i> RequestMethodNotAllowedException.php</a></li>
+                                                                                                    <li><a href="#ResponseInterface.php"><i class="icon-file"></i> ResponseInterface.php</a></li>
+                                                                                                    <li><a href="#HostSanityRequestResponseController.php"><i class="icon-file"></i> HostSanityRequestResponseController.php</a></li>
+                                                                                                    <li><a href="#HostSanityBinDirNotExistException.php"><i class="icon-file"></i> HostSanityBinDirNotExistException.php</a></li>
+                                                                                                    <li><a href="#CommandInfoItem.php"><i class="icon-file"></i> CommandInfoItem.php</a></li>
+                                                                                                    <li><a href="#StatusData.php"><i class="icon-file"></i> StatusData.php</a></li>
+                                                                                                    <li><a href="#SerializableData.php"><i class="icon-file"></i> SerializableData.php</a></li>
+                                                                                                    <li><a href="#CommandErrorInfoItem.php"><i class="icon-file"></i> CommandErrorInfoItem.php</a></li>
+                                                                                                    <li><a href="#ConfigFileReaderTrait.php"><i class="icon-file"></i> ConfigFileReaderTrait.php</a></li>
+                                                                                                    <li><a href="#RequestBodyParserTrait.php"><i class="icon-file"></i> RequestBodyParserTrait.php</a></li>
+                                                                                                    <li><a href="#ErrorInfoItem.php"><i class="icon-file"></i> ErrorInfoItem.php</a></li>
+                                                                                                    <li><a href="#ResponseException.php"><i class="icon-file"></i> ResponseException.php</a></li>
+                                                                                                    <li><a href="#ConfigController.php"><i class="icon-file"></i> ConfigController.php</a></li>
+                                                                    </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>
+
+            
+                            <div class="package-contents">
+                                            <a name="HostSanityRequest.php" id="HostSanityRequest.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityRequest.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityRequest</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method isRequestMethodAllowed()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityResponse.php" id="HostSanityResponse.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityResponse.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityResponse</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $status is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="InfoItem.php" id="InfoItem.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            InfoItem.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\InfoItem</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Response.php" id="Response.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Response.php
+                            <small style="float: right;padding-right: 10px;">14</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\Response</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>36</td>
+                                        <td>No summary for method getResponseCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for method hasResponseData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>48</td>
+                                        <td>No summary for method getResponseData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>54</td>
+                                        <td>No summary for method getContentType()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>60</td>
+                                        <td>No summary for method getResponseBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>75</td>
+                                        <td>Argument $response_body is missing from the Docblock of setResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>75</td>
+                                        <td>Argument $content_type is missing from the Docblock of setResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>75</td>
+                                        <td>Argument $response_code is missing from the Docblock of setResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>75</td>
+                                        <td>No summary for method setResponseBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>81</td>
+                                        <td>Argument $response_data is missing from the Docblock of setResponseData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>81</td>
+                                        <td>Argument $response_code is missing from the Docblock of setResponseData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>81</td>
+                                        <td>No summary for method setResponseData()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ResponseBodyPrinterInterface.php" id="ResponseBodyPrinterInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ResponseBodyPrinterInterface.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for interface \Healthsvc\ResponseBodyPrinterInterface</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>Argument $send_headers is missing from the Docblock of printResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for method printResponseBody()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ResponseDataInvalidException.php" id="ResponseDataInvalidException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ResponseDataInvalidException.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for class \Healthsvc\ResponseDataInvalidException</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method getReason()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $reason is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for property $reason</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Request.php" id="Request.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Request.php
+                            <small style="float: right;padding-right: 10px;">12</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\Request</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method isRequestMethodAllowed()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for method getRequestQuery()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method getRequestMethod()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $request_method is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $request_query is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $request_body is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $content_type is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>8</td>
+                                        <td>No summary for property $requestMethod</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for property $requestQuery</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityConfig.php" id="HostSanityConfig.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityConfig.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityConfig</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>8</td>
+                                        <td>No summary for method getExec()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
+                                        <td>No summary for method getWarnExitStatus()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method getBin()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>29</td>
+                                        <td>No summary for method getBinDir()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityStatusData.php" id="HostSanityStatusData.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityStatusData.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityStatusData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
+                                        <td>No summary for method getHostname()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>Argument $healthStatusTtl is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>Argument $healthStatusTime is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>Argument $hostname is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="RequestResponseController.php" id="RequestResponseController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            RequestResponseController.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\RequestResponseController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>Argument $config_file is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for method getRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for method getResponse()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityController.php" id="HostSanityController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityController.php
+                            <small style="float: right;padding-right: 10px;">13</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>Argument $cmd is missing from the Docblock of exec</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>Argument $stdout is missing from the Docblock of exec</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>Argument $stderr is missing from the Docblock of exec</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method exec()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>No summary for method getStatusData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $exec is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $warn_exit_status is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $bin is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $bin_dir is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>38</td>
+                                        <td>No summary for property $statusData</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="StatusDataProviderInterface.php" id="StatusDataProviderInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            StatusDataProviderInterface.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for interface \Healthsvc\StatusDataProviderInterface</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for method getStatusData()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="RequestMethodNotAllowedException.php" id="RequestMethodNotAllowedException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            RequestMethodNotAllowedException.php
+                            <small style="float: right;padding-right: 10px;">8</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\RequestMethodNotAllowedException</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method getResponseCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method getContentType()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method getResponseBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>No summary for method getRequestMethod()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>Argument $request_method is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ResponseInterface.php" id="ResponseInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ResponseInterface.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for interface \Healthsvc\ResponseInterface</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for method getResponseCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method getContentType()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method getResponseBody()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityRequestResponseController.php" id="HostSanityRequestResponseController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityRequestResponseController.php
+                            <small style="float: right;padding-right: 10px;">17</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\HostSanityRequestResponseController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method getRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method getResponse()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>Argument $send_headers is missing from the Docblock of printResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>No summary for method printResponseBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>Argument $config_file is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>Argument $request_method is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>Argument $request_query is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>Argument $request_body is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>Argument $content_type is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>45</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for property $config</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>40</td>
+                                        <td>No summary for property $requestMethod</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>41</td>
+                                        <td>No summary for property $requestQuery</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for property $requestBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>No summary for property $contentType</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="HostSanityBinDirNotExistException.php" id="HostSanityBinDirNotExistException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            HostSanityBinDirNotExistException.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for class \Healthsvc\HostSanityBinDirNotExistException</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method getBinDir()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $bin_dir is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for property $binDir</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="CommandInfoItem.php" id="CommandInfoItem.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            CommandInfoItem.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\CommandInfoItem</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method getStdout()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $stdout is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for property $stdout</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="StatusData.php" id="StatusData.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            StatusData.php
+                            <small style="float: right;padding-right: 10px;">37</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\StatusData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>54</td>
+                                        <td>No summary for method refreshMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>73</td>
+                                        <td>No summary for method hasNoTests()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>77</td>
+                                        <td>No summary for method hasAnyTest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>84</td>
+                                        <td>No summary for method getHealthStatusTime()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>91</td>
+                                        <td>No summary for method getHealthStatusTtl()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>98</td>
+                                        <td>No summary for method getHealthInfo()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>105</td>
+                                        <td>No summary for method getExecExitStatus()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>112</td>
+                                        <td>No summary for method getHealthSuccess()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>119</td>
+                                        <td>No summary for method getHealthWarn()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>126</td>
+                                        <td>No summary for method getHealthFailure()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>133</td>
+                                        <td>No summary for method getMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>137</td>
+                                        <td>Argument $label is missing from the Docblock of setExecExitStatus</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>137</td>
+                                        <td>Argument $exit_status is missing from the Docblock of setExecExitStatus</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>137</td>
+                                        <td>No summary for method setExecExitStatus()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>142</td>
+                                        <td>Argument $label is missing from the Docblock of setHealthFailure</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>142</td>
+                                        <td>Argument $health_failure is missing from the Docblock of setHealthFailure</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>142</td>
+                                        <td>No summary for method setHealthFailure()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>Argument $label is missing from the Docblock of setHealthWarn</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>Argument $health_warn is missing from the Docblock of setHealthWarn</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>147</td>
+                                        <td>No summary for method setHealthWarn()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>152</td>
+                                        <td>No summary for method hasAllHealthSuccess()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>159</td>
+                                        <td>No summary for method hasAnyHealthFailure()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>163</td>
+                                        <td>No summary for method hasAnyHealthWarn()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>167</td>
+                                        <td>Argument $label is missing from the Docblock of hasExecExitStatus</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>167</td>
+                                        <td>No summary for method hasExecExitStatus()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>172</td>
+                                        <td>Argument $label is missing from the Docblock of hasHealthFailure</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>172</td>
+                                        <td>No summary for method hasHealthFailure()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>177</td>
+                                        <td>Argument $label is missing from the Docblock of moveHealthFailureToWarn</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>177</td>
+                                        <td>No summary for method moveHealthFailureToWarn()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>187</td>
+                                        <td>Argument $label is missing from the Docblock of setHealthSuccess</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>187</td>
+                                        <td>Argument $success_info is missing from the Docblock of setHealthSuccess</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>187</td>
+                                        <td>No summary for method setHealthSuccess()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>Argument $health_staus_ttl is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>Argument $health_status_time is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>193</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="SerializableData.php" id="SerializableData.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            SerializableData.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \Healthsvc\SerializableData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method getSerializableProperties()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>No summary for method getSerializableValues()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>Argument $input is missing from the Docblock of toSnakeCase</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for method toSnakeCase()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>64</td>
+                                        <td>No summary for method toSerializedArray()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="CommandErrorInfoItem.php" id="CommandErrorInfoItem.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            CommandErrorInfoItem.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\CommandErrorInfoItem</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method getStderr()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $stdout is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $stderr is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for property $stderr</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ConfigFileReaderTrait.php" id="ConfigFileReaderTrait.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ConfigFileReaderTrait.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for trait \Healthsvc\ConfigFileReaderTrait</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method getConfig()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>Argument $config_file is missing from the Docblock of setConfigFile</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for method setConfigFile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for property $config</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="RequestBodyParserTrait.php" id="RequestBodyParserTrait.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            RequestBodyParserTrait.php
+                            <small style="float: right;padding-right: 10px;">11</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for trait \Healthsvc\RequestBodyParserTrait</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for method getRequestBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for method getContentType()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method getRequestData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $request_body is missing from the Docblock of setRequestBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $content_type is missing from the Docblock of setRequestBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method setRequestBody()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for property $requestBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for property $contentType</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for property $requestData</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ErrorInfoItem.php" id="ErrorInfoItem.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ErrorInfoItem.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\ErrorInfoItem</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method getMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $message is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for property $message</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ResponseException.php" id="ResponseException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ResponseException.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for class \Healthsvc\ResponseException</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>Argument $send_headers is missing from the Docblock of printResponseBody</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for method printResponseBody()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ConfigController.php" id="ConfigController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ConfigController.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \Healthsvc\ConfigController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Argument $key is missing from the Docblock of getConfigVal</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method getConfigVal()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $config is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for property $config</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                    </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Healthsvc.html">\Healthsvc</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on December 7th, 2018 at 05:29.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
