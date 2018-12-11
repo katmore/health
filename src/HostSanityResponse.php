@@ -9,7 +9,7 @@ class HostSanityResponse extends Response {
    const RESPONSE_CODE_ALL_SUCCESS = 200;
    public function __construct(HostSanityStatusData $status) {
       
-      if ($status->hasNoTests()) {
+      if (!$status->hasAnyTest()) {
          $responseCode = static::RESPONSE_CODE_HAS_NO_TESTS;
       } else if ($status->hasAnyHealthFailure()) {
          $responseCode = static::RESPONSE_CODE_HAS_FAILURE;
