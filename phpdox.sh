@@ -108,7 +108,7 @@ reformat_html() {
    local temp_filename=
    while read filename; do
       temp_filename=$(echo $filename | sed "s|$PHPDOX_HTML_ROOT|\\$temp_PHPDOX_HTML_ROOT|")
-      sed "s|$APP_DIR/||g" $filename | sed "s|branch: devel||g" > $temp_filename
+      sed "s|$APP_DIR/||g" $filename | sed "s|branch: devel||g" | sed "s|branch: master||g" | sed "s|-dirty||g" > $temp_filename
       #echo "temp_filename: $temp_filename"
       #echo "filename: $filename"
    done < $temp_PHPDOX_HTML_ROOT/.html-files
