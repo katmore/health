@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Healthsvc\RequestBodyParserTrait</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../traits.xhtml">Traits</a>
+          </li>
+          <li class="separator">
+            <a href="../traits.xhtml#Healthsvc">Healthsvc</a>
+          </li>
+          <li class="separator">RequestBodyParserTrait</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/RequestBodyParserTrait.php.xhtml#line4">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Healthsvc\</small>RequestBodyParserTrait</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">trait RequestBodyParserTrait
+            {<br/><ul class="none"><li>// members</li><li>private string <a href="#members">$requestBody</a> =
+                        '';
+                    </li><li>private string <a href="#members">$contentType</a> =
+                        '';
+                    </li><li>private array <a href="#members">$requestData</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public string <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getRequestBody.xhtml">getRequestBody</a>()
+                    </li><li>public string <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getContentType.xhtml">getContentType</a>()
+                    </li><li>protected array <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getRequestData.xhtml">getRequestData</a>()
+                    </li><li>protected void <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/setRequestBody.xhtml">setRequestBody</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Used by</h4>
+          <ul>
+            <li>
+              <a title="Healthsvc\Request" href="../classes/Healthsvc_Request.xhtml">Healthsvc\Request</a>
+            </li>
+            <li>
+              <a title="Healthsvc\HostSanityRequest" href="../classes/Healthsvc_HostSanityRequest.xhtml">Healthsvc\HostSanityRequest</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="contentType">
+              <strong>$contentType</strong>
+            </li>
+            <li id="requestBody">
+              <strong>$requestBody</strong>
+            </li>
+            <li id="requestData">
+              <strong>$requestData</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="getRequestData">
+              <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getRequestData.xhtml">getRequestData()</a>
+            </li>
+            <li id="setRequestBody">
+              <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/setRequestBody.xhtml">setRequestBody()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getContentType">
+              <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getContentType.xhtml">getContentType()</a>
+            </li>
+            <li id="getRequestBody">
+              <a title="Healthsvc\RequestBodyParserTrait" href="../traits/Healthsvc_RequestBodyParserTrait/getRequestBody.xhtml">getRequestBody()</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-12-05T14:06:21+00:00 (commit #<span title="e19eedb3e8afda66d2aadb5e98eb3da60eb121db">e19eedb</span>)</h3>
+            <div>
+              <p>
+                        Author: Doug Bird (retran@gmail.com) /
+                        Commiter: Doug Bird (retran@gmail.com)
+                    </p>
+              <pre class="wrapped">unit tests
+
+- created unit tests
+- applied various fixes</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-12-05T07:34:34+00:00 (commit #<span title="cf73da414129d0dfcd035dca37ab646f375b6fb7">cf73da4</span>)</h3>
+            <div>
+              <p>
+                        Author: Doug Bird (retran@gmail.com) /
+                        Commiter: Doug Bird (retran@gmail.com)
+                    </p>
+              <pre class="wrapped">init and tests</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
