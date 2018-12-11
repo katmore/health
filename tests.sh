@@ -71,7 +71,7 @@ if [ "$HELP_MODE" ]; then
    echo "  Test Suite Descriptions:"
    echo "    phpunit: \"Unit\" phpunit test suite; see phpunit.xml"
    echo "       If xdebug is available, a coverage report in text format is (re)generated unless the '--skip-coverage' option is provided."
-   echo "       Coverage report path: $ME_DIR/coverage.txt"
+   echo "       Coverage report path: $DOCS_ROOT/coverage.txt"
    echo "       HTML coverage report dir: $HTML_ROOT/.coverage"
    echo ""
    echo "Options:"
@@ -161,9 +161,9 @@ phpunit_html_coverage_check() {
 print_phpunit_text_coverage_path() {
 	 local test_suffix=$1
 	 if [ -z "$test_suffix" ]; then
-	 	  printf "coverage.txt"
+	 	  printf "$DOCS_ROOT/coverage.txt"
  	 else
- 	    printf "coverage-$test_suffix.txt"
+ 	    printf "$DOCS_ROOT/coverage-$test_suffix.txt"
  	 fi
 }
 
