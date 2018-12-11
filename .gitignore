@@ -7,7 +7,6 @@
 /web/phpinfo*.php
 /web/components/*
 /node_modules/*
-/docs/phpdox/
 selenium*
 geckodriver
 phpdoc.xml
