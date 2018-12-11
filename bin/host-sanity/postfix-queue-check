@@ -1,0 +1,117 @@
+#!/bin/sh
+# checks there are no messages above a maximum age in postfix queue 
+#
+
+FAIL_AGE_MINUTES=10
+ME_USAGE="[--quiet] [--fail-age=<MINUTES>(=$FAIL_AGE_MINUTES)] [--warn-age=<MINUTES>]"
+ME_NAME=$(basename $0)
+
+#
+# parse options
+#
+DEFAULT_FAIL_AGE_MINUTES=$FAIL_AGE_MINUTES
+while getopts :huvq-: arg; do
+  case $arg in
+    v|h|u ) HELP_MODE=1 ;;
+    q ) QUIET_MODE=1 ;;
+    - )  LONG_OPTARG="${OPTARG#*=}"
+         case $OPTARG in
+           help|usage) HELP_MODE=1 ;;
+           quiet) QUIET_MODE=1 ;;
+           fail-age=*)FAIL_AGE_MINUTES=$LONG_OPTARG;;
+           warn-age=*)WARN_AGE_MINUTES=$LONG_OPTARG;;        
+           '' )        break ;; # "--" terminates argument processing
+           * )         >&2 echo "$ME_NAME: unknown option --$OPTARG"; exit 2 ;;
+         esac ;;
+    * )  >&2 echo "$ME_NAME: unknown option -$OPTARG"; exit 2 ;;
+  esac
+done
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
+
+#
+# help mode
+#
+[ "$HELP_MODE" = "1" ] && {
+   printf "usage:\n  $ME_NAME $ME_USAGE\n"
+   echo ""
+   echo "Options"
+   echo "  --quiet"
+   echo "    Only print error messages."
+   echo ""
+   echo "  --fail-age=<MINUTES>"
+   echo "    Default: $DEFAULT_FAIL_AGE_MINUTES"
+   echo "    Maximum age in minutes of a queued postfix message to result in failure."
+   echo ""
+   echo "  --warn-age=<MINUTES>"
+   echo "    Maximum age in minutes of a queued postfix message to result in warning."
+   echo ""
+   echo 'exit status meanings:'
+   echo '    3: at least one queued postfix message older than the --fail-age'
+   echo '    5: at least one queued postfix message older than the --warn-age'
+   exit 0
+}
+
+
+if [ ! -z "$1" ]; then
+   FAIL_AGE_MINUTES=$1
+   shift
+fi
+
+case $FAIL_AGE_MINUTES in
+    ''|*[!0-9]*)
+    >&2 echo "$ME_NAME: invalid --fail-age: must be numeric"
+    exit 2
+    ;;
+esac
+
+case $WARN_AGE_MINUTES in
+    *[!0-9]*)
+    >&2 echo "$ME_NAME: invalid --warn-age, must be numeric"
+    exit 2
+    ;;
+esac
+
+qshape > /dev/null 2>&1 || {
+   >&2 echo "$ME_NAME: command 'qshape' is unavailable'"
+   exit 1
+}
+
+qshape_age() {
+   local max_age_minutes=
+   max_age_minutes=$1
+   local qshape=
+   qshape=$(qshape -l -t $max_age_minutes) || {
+      >&2 echo "$ME_NAME: command 'qshape' failed with exit status $?'"
+      return 1
+   }
+   
+   local over_age=
+   over_age=$(echo "$qshape" | head -2 | tail -1 | awk '{print $3}') || {
+      >&2 echo "$ME_NAME: failed to parse qshape output, 'echo|head|tail|awk' failed with exit status $?'"
+      exit 1
+   }
+   
+   case $over_age in
+       ''|*[!0-9]*)
+       >&2 echo "$ME_NAME: parse error on 'qshape' output, unexpected non-numeric string"
+       exit 1
+       ;;
+   esac
+   
+   if [ "$over_age" -gt "0" ]; then
+      >&2 echo "$ME_NAME: number of queued messages older than max allowed age of $max_age_minutes minutes: $over_age"
+      return 3
+   fi
+}
+
+qshape_age $FAIL_AGE_MINUTES || exit
+
+if [ ! -z "$WARN_AGE_MINUTES" ]; then
+   qshape_age $WARN_AGE_MINUTES
+   QSHAPE_AGE_STATUS=$?
+   [ "$QSHAPE_AGE_STATUS" = "3" ] && exit 5 
+   exit $QSHAPE_AGE_STATUS
+fi
+
+[ "$QUIET_MODE" = "1" ] || echo "ok: no queued messages older than max allowed age"
+exit 0
