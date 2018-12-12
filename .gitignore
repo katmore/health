@@ -10,4 +10,5 @@
 selenium*
 geckodriver
 phpdoc.xml
+phpunit.xml
 !/**/.gitkeep
