@@ -177,7 +177,7 @@ if [ "$GENERATE_MD" = "1" ]; then
          if grep -F "$filename" $DOC_ROOT/.md-html/.html2markdown-write > /dev/null 2>&1; then
             return 0
          fi
-         html2markdown --mark-code --ignore-links "$filename" >> "$DOC_ROOT/.phpdox.md"
+         html2markdown --asterisk-emphasis --pad-tables --body-width=0 --ignore-links "$filename" >> "$DOC_ROOT/.phpdox.md"
          local status=$?
          [ $status = "0" ] && {
             echo $filename >> $DOC_ROOT/.md-html/.html2markdown-write
@@ -230,26 +230,32 @@ if [ "$GENERATE_MD" = "1" ]; then
    done < $DOC_ROOT/.md-html/.html-files
    
    #
-   # remove menus
-   sed '/^  \*/d' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
-   mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
-   
-   #
    # save 'Generated using phpDox' message
    GEN_USING_PHPDOX="$(grep '^Generated using phpDox' "$DOC_ROOT/.phpdox.md" | head -1)"
-   #GEN_USING_PHPDOX=$(sedescape $GEN_USING_PHPDOX)
+   
+   #
+   # remove menus
+   #sed '/^  \*/d' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
+   #mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   MENU_STARTWITH=$(sedescape '  * /**phpDox')
+   MENU_ENDWITH=$(sedescape '# ')
+   sed "/^$MENU_STARTWITH/,/^$MENU_ENDWITH/{/^$MENU_STARTWITH/!{/^$MENU_ENDWITH/!d}}" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md"
+   mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   sed "s/^$MENU_STARTWITH//" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md"
+   mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   
    #
    # remove repeated 'Generated using phpDox' lines
    sed '/^Generated using phpDox/d' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
    
    #
-   # add 'Generated using phpDox' one time to placeholder
+   # add 'Generated using phpDox' one time using placeholder
    sed "s/--Generated using phpDox--/$(sedescape $GEN_USING_PHPDOX)/" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
-   
+
    #
-   # trim whitespace in phpdox.md
+   # trim multi newlines in phpdox.md
    sed '/^$/N;/^\n$/D' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
    sed '1{/^$/d}' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
