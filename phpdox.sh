@@ -253,7 +253,12 @@ if [ "$GENERATE_MD" = "1" ]; then
    # add 'Generated using phpDox' one time using placeholder
    sed "s/--Generated using phpDox--/$(sedescape $GEN_USING_PHPDOX)/" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
-
+   
+   #
+   # use '-' for blank table headings
+   sed 's/|  [[:space:]]/| -/g' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
+   mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   
    #
    # trim multi newlines in phpdox.md
    sed '/^$/N;/^\n$/D' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
@@ -265,7 +270,7 @@ if [ "$GENERATE_MD" = "1" ]; then
    # copy temp file to phpdox.md
    mv "$DOC_ROOT/.phpdox.md" "$DOC_ROOT/phpdox.md" || exit
    
-   echo "$ME_NAME: generate-md: finished"
+   echo "$ME_NAME: generate-md: complete"
    echo "$ME_NAME: generated '$DOC_ROOT/phpdox.md'"
    
    #

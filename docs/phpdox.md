@@ -1,7 +1,7 @@
 # healthsvc
 phpdox documentation
 
-Generated Tue Dec 11 20:03:52 PST 2018
+Generated Tue Dec 11 20:31:19 PST 2018
 
 Generated using 'healthsvc/phpdox.sh' - Copyright (c) 2018, Doug Bird. All Rights Reserved.
 
@@ -22,14 +22,14 @@ Name       | Interfaces | Classes | Traits
 
 ## \
 
-Name             | Description               |       
+Name             | Description               | -    
 -----------------|---------------------------|-------
 Exception        |  No description available | EMPTY 
 RuntimeException |  No description available | EMPTY 
 
 ## \Healthsvc
 
-Name                                | Description               |       
+Name                                | Description               | -    
 ------------------------------------|---------------------------|-------
 CommandErrorInfoItem                |  No description available | EMPTY 
 CommandInfoItem                     |  No description available | EMPTY 
@@ -2694,7 +2694,7 @@ class HostSanityRequest extends Request {
 
 Name            | Value 
 ----------------|-------
-ALLOWED_METHODS |       
+ALLOWED_METHODS | -    
 
 ## Methods
 
