@@ -6,7 +6,7 @@ It is designed to integrate into existing projects to provide webservice endpoin
 
 ## Unit Tests
  * [`docs/coverage.txt`](./docs/coverage.txt): unit test coverage report
- * [`phpunit.xml`](./phpunit.xml): PHPUnit configuration file
+ * [`phpunit.xml.dist`](./phpunit.xml.dist): PHPUnit configuration file
  * [`tests/phpunit`](./tests/phpunit): source code for unit tests
 
 To perform unit tests, execute phpunit located in the `vendor/bin` directory.
