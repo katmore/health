@@ -194,16 +194,9 @@ if [ "$GENERATE_MD" = "1" ]; then
    #
    # heading of phpdox.md
    echo "# $(basename $APP_DIR)" >> "$DOC_ROOT/.phpdox.md"
-   echo "phpdox documentation" >> "$DOC_ROOT/.phpdox.md"
+   echo "Automatically generated PHP API documentation" >> "$DOC_ROOT/.phpdox.md"
    echo "" >> "$DOC_ROOT/.phpdox.md"
-   echo "Generated $(date)" >> "$DOC_ROOT/.phpdox.md"
-   echo "" >> "$DOC_ROOT/.phpdox.md"
-   echo "Generated using '$(basename $ME_DIR)/$ME_NAME' - $ME_COPYRIGHT" >> "$DOC_ROOT/.phpdox.md"
-   echo "" >> "$DOC_ROOT/.phpdox.md"
-   echo "--Generated using phpDox--" >> "$DOC_ROOT/.phpdox.md"
-   echo "" >> "$DOC_ROOT/.phpdox.md"
-   echo "Generated using $(html2markdown --version)" >> "$DOC_ROOT/.phpdox.md"
-   echo "" >> "$DOC_ROOT/.phpdox.md"
+   echo "----" >> "$DOC_ROOT/.phpdox.md"
    
    #
    # skip index.xhtml
@@ -251,8 +244,8 @@ if [ "$GENERATE_MD" = "1" ]; then
    
    #
    # add 'Generated using phpDox' one time using placeholder
-   sed "s/--Generated using phpDox--/$(sedescape $GEN_USING_PHPDOX)/" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
-   mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   #sed "s/--Generated using phpDox--/$(sedescape $GEN_USING_PHPDOX)/" "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
+   #mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
    
    #
    # use '-' for blank table headings
@@ -265,6 +258,17 @@ if [ "$GENERATE_MD" = "1" ]; then
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
    sed '1{/^$/d}' "$DOC_ROOT/.phpdox.md" > "$DOC_ROOT/..phpdox.md" || exit
    mv "$DOC_ROOT/..phpdox.md" "$DOC_ROOT/.phpdox.md" || exit
+   
+   #
+   # append footer
+   echo "" >> "$DOC_ROOT/.phpdox.md"
+   echo "----" >> "$DOC_ROOT/.phpdox.md"
+   echo "Generated using '$(basename $ME_DIR)/$ME_NAME' - $ME_COPYRIGHT" >> "$DOC_ROOT/.phpdox.md"
+   echo "" >> "$DOC_ROOT/.phpdox.md"
+   echo "Generated using $(html2markdown --version)" >> "$DOC_ROOT/.phpdox.md"
+   echo "" >> "$DOC_ROOT/.phpdox.md"
+   echo "$GEN_USING_PHPDOX" >> "$DOC_ROOT/.phpdox.md"
+   echo "" >> "$DOC_ROOT/.phpdox.md"
    
    #
    # copy temp file to phpdox.md

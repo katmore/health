@@ -1,13 +1,7 @@
 # healthsvc
-phpdox documentation
+Automatically generated PHP API documentation
 
-Generated Tue Dec 11 20:31:19 PST 2018
-
-Generated using 'healthsvc/phpdox.sh' - Copyright (c) 2018, Doug Bird. All Rights Reserved.
-
-Generated using phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors
-
-Generated using html2markdown 2018.1.9
+----
 
 # Namespaces
 
@@ -3843,4 +3837,12 @@ interface ResponseBodyPrinterInterface {
 #### public
 
   * printResponseBody()
+
+
+----
+Generated using 'healthsvc/phpdox.sh' - Copyright (c) 2018, Doug Bird. All Rights Reserved.
+
+Generated using html2markdown 2018.1.9
+
+Generated using phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors
 
