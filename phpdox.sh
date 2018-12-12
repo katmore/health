@@ -194,7 +194,7 @@ if [ "$GENERATE_MD" = "1" ]; then
    #
    # heading of phpdox.md
    echo "# $(basename $APP_DIR) PHP docs" >> "$DOC_ROOT/.phpdox.md"
-   echo "Automatically generated PHP documentation" >> "$DOC_ROOT/.phpdox.md"
+   echo "PHP usage documentation" >> "$DOC_ROOT/.phpdox.md"
    echo "" >> "$DOC_ROOT/.phpdox.md"
    echo "----" >> "$DOC_ROOT/.phpdox.md"
    
