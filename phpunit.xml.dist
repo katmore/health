@@ -15,10 +15,17 @@
       <ini name="memory_limit" value="-1" />
    </php>
     <testsuites>
-        <testsuite name="Healthsvc Unit Test Suite">
+        <testsuite name="unit">
             <directory suffix="Test.php">./tests/phpunit/Tests/Unit</directory>
         </testsuite>
     </testsuites>
+    
+    <groups>
+	  <exclude>
+	    <group>functional</group>
+	  </exclude>
+	</groups>
+	
     <!-- whitelist directory filters for code-coverage analysis -->
     <filter>
         <whitelist>

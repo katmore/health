@@ -30,7 +30,7 @@ USAGE;
    
    const VENDOR_AUTOLOAD = self::APP_ROOT.'/vendor/autoload.php';
    
-   const BIN_RELDIR = 'bin/sanity';
+   const BIN_RELDIR = 'bin/host-sanity';
    
    const BIN_ROOT = self::APP_ROOT.'/'.self::BIN_RELDIR;
    
@@ -311,7 +311,7 @@ EOT;
          return $this->exitStatus = 2;
       }
 
-      $fullCommand = $command.trim(' '.implode(" ",$argv));
+      $fullCommand = trim($command.' '.implode(" ",$argv));
       $this->printLine(["full '$label' command: $fullCommand"]);
       
       $configExec = $this->getConfigVal('exec');
@@ -347,7 +347,7 @@ EOT;
          return $this->exitStatus = 2;
       }
       
-      $fullCommand = $command.trim(' '.implode(" ",$argv));
+      $fullCommand = trim($command.' '.implode(" ",$argv));
       $this->printLine(["full '$label' command: $fullCommand"]);
       
       $configBin = $this->getConfigVal('bin');
