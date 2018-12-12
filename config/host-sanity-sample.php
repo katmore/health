@@ -86,8 +86,7 @@ $config['bin']['ram-usage'] = 'avg-ram-check 75 --warn-percent=50';
 
 /*
  * $config['warn-exit-status']['ram-usage'] - 'ram-usage' exit status configuration:
- * Defines the exit status codes that will cause the test to be considered a "warning"
- *    rather than a "failure".
+ * Defines the exit status codes that will cause a test with a "failure" status to instead have a "warn" status.
  *    Example: [5,8,9]
  * According to 'avg-ram-check --help' these exit status codes have the following meanings:
  *    5: average ram usage above warning threshold

@@ -76,10 +76,7 @@ Runtime Mode Switches:
    
   --usage
    Print message regarding available switches and options then exit.
-   
-  --help=<TEST-COMMAND>
-   Print the help message of a test command (should one be available) and exit.
-   
+
   --print-bin-list
    Print a list of every available 'bin' test (located in the 'healthsvc/bin/sanity' directory) and exit.
    
@@ -93,14 +90,18 @@ Installer Options:
   --overwrite-ok
    Always overwrite any file that already exists.
    
-Test Type Options:
+Test Options:
   --bin
    Creates a 'bin' test which executes a script in the 'healthsvc/bin/sanity' directory.
    Default test type.
    
   --exec
    Creates an 'exec' test which executes a local system command.
-   
+
+  --warn-exit-status=<EXIT-STATUS-CSV>
+   Defines the exit status codes that will cause a test with a "failure" status to instead have a "warn" status.
+   Comma separated list of integers.
+
 Arguments:
    <TEST-LABEL>
     Test label
@@ -191,8 +192,8 @@ EOT;
          }
       }
       
-      if (!($binMode = isset(getopt("",["--bin",])['--bin']))) {
-         if (!($execMode = isset(getopt("",["--exec",])['--exec']))) {
+      if (!($binMode = isset(getopt("",["bin",])['bin']))) {
+         if (!($execMode = isset(getopt("",["exec",])['exec']))) {
             $binMode = true;
          }
       }
@@ -213,6 +214,11 @@ EOT;
           * @var string[]
           */
          private $argv = [];
+         /**
+          * @var int[]
+          */
+         private $warnExitStatus = [];
+         
          public function getLabel() : string {
             is_string($this->label) || $this->label = "";
             return $this->label;
@@ -224,10 +230,13 @@ EOT;
          public function getArgv() : array {
             return $this->argv;
          }
+         public function getWarnExitStatus() : array {
+            return $this->warnExitStatus;
+         }
          public function __construct() {
             global $argv;
             $optind = 0;
-            getopt('',[],$optind);
+            $opt = getopt('',['warn-exit-status::'],$optind);
             $i=-1;
             array_walk($argv,function($v)
                use(&$optind,&$i)
@@ -244,6 +253,16 @@ EOT;
                }
                $this->argv []= $v;
             });
+            if (isset($opt['warn-exit-status'])) {
+               $warnExitStatus = explode(',',$opt['warn-exit-status']);
+               array_walk($warnExitStatus,function($exitStatus)
+               {
+                  $exitStatus = trim($exitStatus);
+                  if (ctype_digit($exitStatus)) {
+                     $this->warnExitStatus []= (int) $exitStatus;
+                  }
+               });
+            }
          }
       };
       
@@ -252,25 +271,67 @@ EOT;
          return $this->exitStatus = 2;
       }
       
+      if (empty($test->getCommand())) {
+         $this->printErrLine(['missing <TEST-COMMAND>']);
+         return $this->exitStatus = 2;
+      }
+      
       if ($binMode) {
          
-         $this->binMode($test->getLabel(),$test->getCommand(),$test->getArgv());
-         if ($this->exitStatus!==1) return;
+         $this->binMode($test->getLabel(),$test->getCommand(),$test->getArgv(),$test->getWarnExitStatus());
+         return;
          
       }
       
       if ($execMode) {
          
-         
+         $this->execMode($test->getLabel(),$test->getCommand(),$test->getArgv(),$test->getWarnExitStatus());
+         return;
          
       }
       
+   }
+   
+   private function setWarnExitStatusConfig(string $label, array $warn_exit_status) {
+      if (!count($warn_exit_status)) return;
+      $configWarnExitStatus = $this->getConfigVal('warn-exit-status');
+      if (!is_array($configWarnExitStatus)) $configWarnExitStatus = [];
+      $configWarnExitStatus[$label] = $warn_exit_status;
+      if (true===($status=$this->setConfigVal('warn-exit-status',$configWarnExitStatus))) {
+         $this->printLine(["successfully modified the 'warn-exit-status' for test '$label' in '".basename(self::CONFIG_PATH)."' config file"]);
+      } else if (null===$status) {
+         $this->printLine(["the 'warn-exit-status' for test '$label' with identical parameters already exists in '".basename(self::CONFIG_PATH)."' config file"]);
+      }
+      return $status;
+   }
+   
+   private function execMode(string $label,string $command, array $argv, array $warn_exit_status) {
+      if (empty($command)) {
+         $this->printErrLine(['missing <TEST-COMMAND>']);
+         return $this->exitStatus = 2;
+      }
+
+      $fullCommand = $command.trim(' '.implode(" ",$argv));
+      $this->printLine(["full '$label' command: $fullCommand"]);
       
+      $configExec = $this->getConfigVal('exec');
+      if (!is_array($configExec)) $configExec = [];
       
+      $configExec[$label] = $fullCommand;
+      
+      if (true===($status=$this->setConfigVal('exec',$configExec))) {
+         $this->printLine(["successfully added test '$label' to '".basename(self::CONFIG_PATH)."' config file"]);
+      } else if (null===$status) {
+         $this->printLine(["test '$label' with identical parameters already exists in '".basename(self::CONFIG_PATH)."' config file"]);
+      }
+      
+      if (!is_int($status)) {
+         $this->setWarnExitStatusConfig($label,$warn_exit_status);
+      }
       
    }
    
-   private function binMode(string $label,string $command, array $argv) {
+   private function binMode(string $label,string $command, array $argv, array $warn_exit_status) {
       if (empty($command)) {
          $this->printErrLine(['missing <TEST-COMMAND>']);
          return $this->exitStatus = 2;
@@ -285,9 +346,8 @@ EOT;
          $this->supressHintError = true;
          return $this->exitStatus = 2;
       }
-      //echo "Test command: $command\n";
-      //echo "Test args: ".(count($argv)?implode(" ",$argv):"[none]")."\n";
-      $fullCommand = $command.' '.implode(" ",$argv);
+      
+      $fullCommand = $command.trim(' '.implode(" ",$argv));
       $this->printLine(["full '$label' command: $fullCommand"]);
       
       $configBin = $this->getConfigVal('bin');
@@ -301,6 +361,10 @@ EOT;
          $this->printLine(["successfully added test '$label' to '".basename(self::CONFIG_PATH)."' config file"]);
       } else if (null===$status) {
          $this->printLine(["test '$label' with identical parameters already exists in '".basename(self::CONFIG_PATH)."' config file"]);
+      }
+      
+      if (!is_int($status)) {
+         $this->setWarnExitStatusConfig($label,$warn_exit_status);
       }
       
    }
