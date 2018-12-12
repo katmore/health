@@ -1,8 +1,4 @@
-
-
 Code Coverage Report:       
-  2018-12-11 23:35:59       
-                            
  Summary:                   
   Classes: 100.00% (22/22)  
   Methods: 100.00% (78/78)  
