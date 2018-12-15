@@ -323,7 +323,8 @@ if [ -n "$TEST_SUITE" ]; then
    #
    if [ "$TEST_SUITE" = "phpunit" ]; then
       phpunit_sanity_check || exit
-      phpunit $(print_phpunit_coverage_opt) "$@" || {
+      echo "phpunit args: $@"
+      phpunit "$@" || {
       	 cmd_status_filter $?
       	 exit
       }
@@ -352,7 +353,7 @@ phpunit_sanity_check || exit
 #
 TESTS_STATUS=0
 
-echo "print_phpunit_coverage_opt: $(print_phpunit_coverage_opt)"
+echo "phpunit args: $(print_phpunit_coverage_opt)"
 #
 # run all phpunit tests
 #
