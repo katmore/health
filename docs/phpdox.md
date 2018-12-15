@@ -1,5 +1,5 @@
 # healthsvc PHP docs
-Automatically generated PHP documentation
+PHP usage documentation
 
 ----
 
@@ -1691,11 +1691,13 @@ PROPERTIES_TO_SNAKE_CASE | true
 
 ## Signature
 
-`public function printResponseBody([boolean $send_headers = true] ) `
+`public function printResponseBody([boolean $send_headers = true, [boolean $pretty_format = false]] ) `
 
 ## Parameters
 
 `$send_headers` — boolean
+    
+`$pretty_format` — boolean
     
 
 ## Defined by Interface
@@ -3112,7 +3114,7 @@ PROPERTIES_TO_SNAKE_CASE | true
 
 ## Signature
 
-`public function printResponseBody([boolean $send_headers = true] ) `
+`public function printResponseBody([boolean $send_headers = true, [boolean $pretty_format = false]] ) `
 
 ## Parameters
 
@@ -3120,6 +3122,9 @@ PROPERTIES_TO_SNAKE_CASE | true
     Optionally set to <i>false</i> to suppress sending HTTP headers.  
   
   
+
+`$pretty_format` — boolean
+    
 
 ## Returns
 
@@ -3224,7 +3229,12 @@ bool
 
 ## Signature
 
-`public function getResponseBody() `
+`public function getResponseBody([boolean $pretty_format = false] ) `
+
+## Parameters
+
+`$pretty_format` — boolean
+    
 
 ## Returns
 
