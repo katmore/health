@@ -33,6 +33,57 @@ class ResponseTest extends TestCase {
       $this->assertEquals('application/json',$response->getContentType());
    }
    
+   public function prettyBodyProvider() : array {
+      $data = [];
+      
+      $responseData = array (
+         'hostname' => 'my-host',
+         'exec_exit_status' =>
+         array (
+         ),
+         'health_status_time' => '2018-12-14T19:19:12-08:00',
+         'health_status_ttl' => 0,
+         'message' => 'total success',
+         'health_info' =>
+         array (
+            'sample-test' =>
+            array (
+               'stdout' =>
+               array (
+                  0 => 'sample test',
+               ),
+            ),
+         ),
+         'health_success' =>
+         array (
+            0 => 'sample-test',
+         ),
+         'health_warn' =>
+         array (
+         ),
+         'health_failure' =>
+         array (
+         ),
+      );
+      
+      $data []= [$responseData,json_encode($responseData,JSON_PRETTY_PRINT)];
+      
+      return $data;
+   }
+   
+   /**
+    * @dataProvider prettyBodyProvider
+    * @depends testResponseData
+    */
+   public function testGetResponseBodyIsPrettyWhenPrettyFormatIsTrue(array $response_data, string $pretty_response_body) {
+      $response = new class($response_data) extends Response {
+         public function __construct(array $response_data) {
+            $this->setResponseData($response_data);
+         }
+      };
+      $this->assertEquals($pretty_response_body,$response->getResponseBody(true));
+   }
+   
    public function testInvalidResponseData() {
       $this->expectException(ResponseDataInvalidException::class);
       new class() extends Response {

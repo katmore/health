@@ -14,7 +14,12 @@ new class() {
       
       $controller = new HostSanityRequestResponseController(self::CONFIG_DIR.'/'.basename(__FILE__));
       
-      $controller->printResponseBody();
+      $prettyPrint = false;
+      if (isset( $_SERVER ['HTTP_ACCEPT'] ) && false === strpos( $_SERVER ['HTTP_ACCEPT'], 'application/json' ) && false !== strpos( $_SERVER ['HTTP_ACCEPT'], 'text/html' )) {
+         $prettyPrint = true;
+      }
+      
+      $controller->printResponseBody(true,$prettyPrint);
       
    }
     

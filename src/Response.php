@@ -57,7 +57,14 @@ abstract class Response implements ResponseInterface {
    /**
     * @return string response body
     */
-   final public function getResponseBody() : string {
+   final public function getResponseBody(bool $pretty_format=false) : string {
+      
+      if ($pretty_format && $this->hasResponseData) {
+         
+         if ($this->getContentType()==='application/json') {
+            return json_encode($this->responseData,JSON_PRETTY_PRINT);
+         }
+      }
       return $this->responseBody;
    }
    /**
@@ -65,27 +72,29 @@ abstract class Response implements ResponseInterface {
     * @param bool $send_headers Optionally set to <i>false</i> to suppress sending HTTP headers. 
     * @return void
     */
-   final public function printResponseBody(bool $send_headers=true) : void {
+   final public function printResponseBody(bool $send_headers=true,bool $pretty_format=false) : void {
       if ($send_headers) {
          header("Content-type: ".$this->getContentType());
          http_response_code($this->getResponseCode());
       }
-      echo $this->responseBody;
+      echo $this->getResponseBody($pretty_format);
    }
    final protected function setResponseBody(string $response_body,string $content_type,int $response_code=200) {
+      
       $this->hasResponseData = false;
       $this->responseBody = $response_body;
       $this->contentType = $content_type;
       $this->responseCode = $response_code;
    }
    final protected function setResponseData(array $response_data, int $response_code=200) {
-      $this->hasResponseData = true;
+      
       if (false===($responseBody = json_encode($response_data))) {
          throw new ResponseDataInvalidException('error while encoding json: '.json_last_error_msg());
       }
       $this->responseData = $response_data;
       
       $this->setResponseBody($responseBody,self::JSON_CONTENT_TYPE,$response_code);
+      $this->hasResponseData = true;
    }
    
    

@@ -28,12 +28,12 @@ class HostSanityRequestResponseController extends RequestResponseController {
       return new HostSanityResponse($controller->getStatusData());
    }
    
-   public function printResponseBody(bool $send_headers=true) : void {
+   public function printResponseBody(bool $send_headers=true, bool $pretty_format=false) : void {
       try {
          $response = $this->getResponse();
-         $response->printResponseBody($send_headers);
+         $response->printResponseBody($send_headers,$pretty_format);
       } catch (ResponseException $e) {
-         $e->printResponseBody($send_headers);
+         $e->printResponseBody($send_headers,$pretty_format);
       }
    }
    

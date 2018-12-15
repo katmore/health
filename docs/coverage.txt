@@ -2,7 +2,7 @@ Code Coverage Report:
  Summary:                   
   Classes: 100.00% (22/22)  
   Methods: 100.00% (78/78)  
-  Lines:   100.00% (266/266)
+  Lines:   100.00% (269/269)
 
 \Healthsvc::ConfigFileReaderTrait
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
@@ -35,7 +35,7 @@ Code Coverage Report:
 \Healthsvc::Healthsvc\RequestResponseController
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  2/  2)
 \Healthsvc::Healthsvc\Response
-  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 21/ 21)
+  Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 24/ 24)
 \Healthsvc::Healthsvc\ResponseDataInvalidException
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
 \Healthsvc::Healthsvc\ResponseException
