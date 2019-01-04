@@ -1,7 +1,7 @@
 #!/bin/sh
 # checks that average ram usage does exceed specified percentage
 #
-ME_USAGE='[--help]|[--quiet,--verbose][--warn-percent=<NUM>] <MAX-PERCENT>'
+ME_USAGE='[--help]|[--quiet,--verbose][--warn-percent=<PERCENT>][--uptime-min=<SECONDS> [--uptime-exit-normal]] <MAX-PERCENT>'
 ME_NAME=$(basename $0)
 
 #
@@ -24,7 +24,9 @@ while getopts :huq-: arg; do
     q ) QUIET_MODE=1 ;;
     - )  LONG_OPTARG="${OPTARG#*=}"
          case $OPTARG in
-           warn-percent=*)WARN_PERCENT_FREE=$LONG_OPTARG ;;
+           warn-percent=*)WARN_PERCENT=$LONG_OPTARG ;;
+           uptime-min=*)UPTIME_MIN=$LONG_OPTARG ;;
+           uptime-exit-normal) UPTIME_EXIT_NORMAL=1 ;;
            help|usage) HELP_MODE=1 ;;
            quiet) QUIET_MODE=1 ;;  
            verbose) VERBOSE_MODE=1 ;;         
@@ -40,12 +42,38 @@ shift $((OPTIND-1)) # remove parsed options and args from $@ list
 # help mode
 #
 [ "$HELP_MODE" = "1" ] && {
-	printf "usage:\n  $ME_NAME $ME_USAGE\n"
+	echo "usage:"
+	echo "  $ME_NAME $ME_USAGE"
+	echo ""
+	echo "arguments"
+	echo "  <MAX-PERCENT>"
+	echo "  Maximum amount of average ram usage allowed expressed as a percentage of total system ram."
+	echo "  Terminate with exit status 3 if average ram usage as reported by the 'sar' command exceeds this value."
+	echo "  Must be an integer value between 0 to 100."
+	echo ""
+	echo "options:"
+	echo "  --warn-percent=<PERCENT>"
+	echo "  Warning threshold of average ram usage expressed as a percentage of total system ram."
+   echo "  Terminate with exit status 5 if average ram usage as reported by the 'sar' command exceeds this value."
+   echo "  Must be an integer value between 0 to 100."
+   echo "  Must be greater than the <MAX-PERCENT> argument."
+	echo ""
+	echo "  --uptime-min=<SECONDS>"
+	echo "  Minimum amount of system uptime expressed in seconds."
+	echo "  Terminate with exit status 8 if system uptime is less than this value."
+	echo "  Must be an integer value."
+	echo "  Note that this option exists beacuse 'sar' ram usage data does not persist after a reboot, which causes 'sar' to be unable to provide an average until it can collect enough data."
+	echo ""
+	echo "  --uptime-exit-normal"
+	echo "  This flag may be used in conjunction with the --uptime-min option."
+	echo "  Terminate normally (with exit status 0) if system uptime is less than the --uptime-min value."
+	echo ""
 	echo 'exit status meanings:'
-	echo '    3: average ram usage too high'
-	echo '    5: average ram usage above warning threshold'
-	echo '    7: system is missing the "sar" command'
-	echo '    8: parse error while processing "sar" command output'
+	echo '    3: average ram usage exceeds maximum allowed'
+	echo '    5: average ram usage exceeds warning threshold'
+	echo '    7: missing dependency'
+	echo '    8: system uptime is less than --uptime-min'
+	echo '   10: sar output parse error'
 	exit 0
 }
 
@@ -63,7 +91,7 @@ percent_free_sanity() {
 	[ $(expr "x$percent_free" : "x[0-9]*$") -gt 0 ] || {
   	>&2 echo "$ME_NAME: invalid $arglabel: must be numeric"; return 2
   }
-  [ "$percent_free" -gt "0" ] || {
+  [ "$percent_free" -ge "0" ] || {
   	>&2 echo "$ME_NAME: invalid $arglabel: must be 0 or greater"; return 2
   }
   [ "$percent_free" -le "100" ] || {
@@ -77,10 +105,26 @@ percent_free_sanity() {
 percent_free_sanity "$MAX_PERCENT" "<MAX-PERCENT>" || exit
 
 #
-# enforce WARN_PERCENT_FREE sanity
+# enforce WARN_PERCENT sanity
 #
-if [ ! -z "$WARN_PERCENT_FREE" ]; then
-	percent_free_sanity "$WARN_PERCENT_FREE" "--warn-percent" || exit
+if [ ! -z "$WARN_PERCENT" ]; then
+	percent_free_sanity "$WARN_PERCENT" "--warn-percent" || exit
+	[ "$MAX_PERCENT" -lt "$WARN_PERCENT" ] || {
+		>&2 echo "$ME_NAME: invalid --warn-percent: must be greater than <MAX-PERCENT> argument"
+		exit 2
+	}
+fi
+
+#
+# enforce --uptime-min sanity
+#
+if [ ! -z "$UPTIME_MIN" ]; then
+  [ $(expr "x$UPTIME_MIN" : "x[0-9]*$") -gt 0 ] || {
+    >&2 echo "$ME_NAME: invalid --uptime-min: must be numeric"; exit 2
+  }
+  [ "$UPTIME_MIN" -gt "0" ] || {
+    >&2 echo "$ME_NAME: invalid --uptime-min: must be 0 or greater"; exit 2
+  }
 fi
 
 #
@@ -91,17 +135,42 @@ sar -h > /dev/null 2>&1 || {
 }
 
 #
+# apply --uptime-min option
+#
+if [ ! -z "$UPTIME_MIN" ]; then
+  UPTIME_SEC=$(awk '{print $1}' /proc/uptime | xargs printf "%.*f\n" 0) || {
+    >&2 echo "$ME_NAME: failed to get system uptime, 'awk|xargs' terminated with exit status $?"
+    exit 1
+  }
+  [ $(expr "x$UPTIME_SEC" : "x[0-9]*$") -gt 0 ] || {
+    >&2 echo "$ME_NAME: failed to get system uptime, got non-numeric value from 'awk|xargs'"
+    exit 1
+  }
+  if [ "$UPTIME_SEC" -lt "$UPTIME_MIN" ]; then
+    echo_extra "system uptime: $UPTIME_SEC (--uptime-min: $UPTIME_MIN)"
+    if [ "$UPTIME_EXIT_NORMAL" = "1" ]; then
+      echo "system uptime is less than --uptime-min"
+      echo_info "normal exit because --uptime-exit-normal flag is present"
+      exit 0
+    fi
+    >&2 echo "system uptime is less than --uptime-min"
+    exit 8
+  fi
+fi
+
+#
 # sar command
 #
 SAR=$(LC_TIME='POSIX' sar -r) || exit
+
 #
 # get sar header
 #
 SARHEAD=$(echo "$SAR" | head -3 | tail -1)
 [ -n "$SARHEAD" ] || {
-  >&2 echo "$ME_NAME: unable to find column header in sar output:"
-  >&2 echo "$SAR" | head -3 
-	exit 1
+  >&2 echo "$ME_NAME: sar output parse error: unable to find column header in sar output:"
+  >&2 echo "$SAR"
+	exit 10
 }
 echo_extra "$SARHEAD"
 
@@ -110,13 +179,13 @@ echo_extra "$SARHEAD"
 #
 print_sar_colno() { colname=$1
 	colno=$(echo "$SARHEAD" | awk '$1 == "'$colname'"{print NR;exit}' RS='[ \t]+') || {
-		>&2 echo "$ME_NAME: failed to parse sar header"
-		return 1
+		>&2 echo "$ME_NAME: sar output parse error: failed to parse sar header"
+		return 10
 	}
 	[ -n "$colno" ] || {
-		>&2 echo "$ME_NAME: column '$colname' not found in sar header:"
+		>&2 echo "$ME_NAME: sar output parse error: column '$colname' not found in sar header:"
 		>&2 echo "$SARHEAD"
-		return 8
+		return 10
 	}
 	echo $colno
 }
@@ -134,9 +203,9 @@ MEMFREECOL=$(print_sar_colno kbmemfree) || exit
 #
 SARAVG=$(echo "$SAR" | tail -1)
 [ -n "$SARAVG" ] || {
-  >&2 echo "$ME_NAME: unable to find averages in sar output:"
+  >&2 echo "$ME_NAME: sar output parse error: unable to find averages in sar output:"
   >&2 echo "$SAR"
-	exit 1
+	exit 10
 }
 echo_extra "$SARAVG"
 
@@ -157,24 +226,24 @@ MEMFREE=$(echo "$SARAVG" | awk '{print $'$MEMFREECOL'}') || exit
 # enforce sanity of average values
 #
 [ $(expr "x$MEMUSED" : "x[0-9]*$") -gt 0 ] || {
-	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMUSED '$MEMUSED'"
+	>&2 echo "$ME_NAME: sar output parse error: unexpected non-numeric output for sar MEMUSED '$MEMUSED'"
   >&2 print_sar_summary
-  exit 8
+  exit 10
 }
 [ $(expr "x$KBUFFER" : "x[0-9]*$") -gt 0 ] || {
-	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBUFFER '$KBUFFER'"
+	>&2 echo "$ME_NAME: sar output parse error: unexpected non-numeric output for sar KBUFFER '$KBUFFER'"
 	>&2 print_sar_summary
-  exit 8
+  exit 10
 }
 [ $(expr "x$KBCACHE" : "x[0-9]*$") -gt 0 ] || {
-	>&2 echo "$ME_NAME: unexpected non-numeric output for sar KBCACHE '$KBCACHE'"
+	>&2 echo "$ME_NAME: sar output parse error: unexpected non-numeric output for sar KBCACHE '$KBCACHE'"
 	>&2 print_sar_summary
-  exit 8
+  exit 10
 }
 [ $(expr "x$MEMFREE" : "x[0-9]*$") -gt 0 ] || {
-	>&2 echo "$ME_NAME: unexpected non-numeric output for sar MEMFREE '$MEMFREE'"
+	>&2 echo "$ME_NAME: sar output parse error: unexpected non-numeric output for sar MEMFREE '$MEMFREE'"
 	>&2 print_sar_summary
-  exit 8
+  exit 10
 }
 
 #
@@ -197,24 +266,26 @@ REALUSEDPCT=$((100 * $REALUSED / $MEMTOTL)) || exit
 # enforce sanity of memory use percentage
 #
 [ "$REALUSEDPCT" -lt "0" ] && {
-	 >&2 echo "$ME_NAME: invalid percent calulated ($REALUSEDPCT)"
-   exit 1
+	 >&2 echo "$ME_NAME: sar output parse error: invalid percent calulated ($REALUSEDPCT)"
+   exit 10
 }
 
 #
-# enforce average usage percent does not exceed <MAX-PERCENT>
+# enforce <MAX-PERCENT>
 #
 [ "$REALUSEDPCT" -gt "$MAX_PERCENT" ] && {
    >&2 echo "system average ram usage of $REALUSEDPCT% exceeds maximum allowed ($MAX_PERCENT%)"
    exit 3
 }
 
+#
+# apply --warn-prcent option
+#
+if [ ! -z "$WARN_PERCENT" ]; then
+	[ "$REALUSEDPCT" -gt "$WARN_PERCENT" ] && {
+	   >&2 echo "system average ram usage of $REALUSEDPCT% exceeds warning threshold ($WARN_PERCENT%)"
+	   exit 5
+	}
+fi
+
 echo_info "ok: system has $REALUSEDPCT% average ram usage"
-
-
-
-
-
-
-
-
