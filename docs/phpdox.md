@@ -18,33 +18,33 @@ Name       | Interfaces | Classes | Traits
 
 Name             | Description               | -    
 -----------------|---------------------------|-------
-Exception        |  No description available | EMPTY 
-RuntimeException |  No description available | EMPTY 
+Exception        | -                         | -     
+RuntimeException | -                         | -     
 
 ## \Healthsvc
 
 Name                                | Description               | -    
 ------------------------------------|---------------------------|-------
-CommandErrorInfoItem                |  No description available | EMPTY 
-CommandInfoItem                     |  No description available | EMPTY 
-ConfigController                    |  No description available | EMPTY 
-ErrorInfoItem                       |  No description available | EMPTY 
-HostSanityBinDirNotExistException   |  No description available | EMPTY 
-HostSanityConfig                    |  No description available | EMPTY 
-HostSanityController                |  No description available | EMPTY 
-HostSanityRequest                   |  No description available | EMPTY 
-HostSanityRequestResponseController |  No description available | EMPTY 
-HostSanityResponse                  |  No description available | EMPTY 
-HostSanityStatusData                |  No description available | EMPTY 
-InfoItem                            |  No description available | EMPTY 
-Request                             |  No description available | EMPTY 
-RequestMethodNotAllowedException    |  No description available | EMPTY 
-RequestResponseController           |  No description available | EMPTY 
-Response                            |  No description available | EMPTY 
-ResponseDataInvalidException        |  No description available | EMPTY 
-ResponseException                   |  No description available | EMPTY 
-SerializableData                    |  No description available | EMPTY 
-StatusData                          |  No description available | EMPTY 
+CommandErrorInfoItem                | -                         | -     
+CommandInfoItem                     | -                         | -     
+ConfigController                    | -                         | -     
+ErrorInfoItem                       | -                         | -     
+HostSanityBinDirNotExistException   | -                         | -     
+HostSanityConfig                    | -                         | -     
+HostSanityController                | -                         | -     
+HostSanityRequest                   | -                         | -     
+HostSanityRequestResponseController | -                         | -     
+HostSanityResponse                  | -                         | -     
+HostSanityStatusData                | -                         | -     
+InfoItem                            | -                         | -     
+Request                             | -                         | -     
+RequestMethodNotAllowedException    | -                         | -     
+RequestResponseController           | -                         | -     
+Response                            | -                         | -     
+ResponseDataInvalidException        | -                         | -     
+ResponseException                   | -                         | -     
+SerializableData                    | -                         | -     
+StatusData                          | -                         | -     
 
 # Interfaces
 
@@ -52,21 +52,21 @@ StatusData                          |  No description available | EMPTY
 
 Name             | Description               
 -----------------|---------------------------
-JsonSerializable |  No description available 
+JsonSerializable | -                         
 
 ## \Healthsvc
 
 Name                                  | Description               
 --------------------------------------|---------------------------
-BuildableExecExitStatusDataInterface  |  No description available 
-BuildableMessageDataInterface         |  No description available 
-BuildableResponseDataInterface        |  No description available 
-ConsumableExecExitStatusDataInterface |  No description available 
-ConsumableMessageDataInterface        |  No description available 
-ConsumableResponseDataInterface       |  No description available 
-ResponseBodyPrinterInterface          |  No description available 
-ResponseInterface                     |  No description available 
-StatusDataProviderInterface           |  No description available 
+BuildableExecExitStatusDataInterface  | -                         
+BuildableMessageDataInterface         | -                         
+BuildableResponseDataInterface        | -                         
+ConsumableExecExitStatusDataInterface | -                         
+ConsumableMessageDataInterface        | -                         
+ConsumableResponseDataInterface       | -                         
+ResponseBodyPrinterInterface          | -                         
+ResponseInterface                     | -                         
+StatusDataProviderInterface           | -                         
 
 # Traits
 
@@ -74,9 +74,9 @@ StatusDataProviderInterface           |  No description available
 
 Name                            | Description               
 --------------------------------|---------------------------
-ConfigFileReaderTrait           |  No description available 
-RequestBodyParserTrait          |  No description available 
-ResponseDataRefreshMessageTrait |  No description available 
+ConfigFileReaderTrait           | -                         
+RequestBodyParserTrait          | -                         
+ResponseDataRefreshMessageTrait | -                         
 
 # Healthsvc\ConfigFileReaderTrait::setConfigFile
 
@@ -3851,12 +3851,12 @@ interface ResponseBodyPrinterInterface {
 
 ----
 # Legal
-Copyright (c) 2018, Doug Bird. All Rights Reserved.
-
-healthsvc is copyrighted free software and is distributed under the terms of the MIT license or the GPLv3 license.
+Copyright (c) 2018-2019, Doug Bird. All Rights Reserved.
+Healthsvc is copyrighted free software and is distributed under the terms of the MIT license or the GPLv3 license.
 
 This document was automatically generated by the following:
  * healthsvc/phpdox.sh
  * html2markdown 2018.1.9
- * phpDox 0.11.2 - Copyright (C) 2010 - 2018 by Arne Blankerts and Contributors
+ * phpDox 0.11.2 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors
+
 
