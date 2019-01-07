@@ -4,14 +4,14 @@
 
 ME_ABOUT='wrapper to peform unit tests'
 ME_USAGE='[<...OPTIONS>] [<TEST-SUITE>] [[--]<...passthru args>]'
-ME_COPYRIGHT='Copyright (c) 2018, Doug Bird. All Rights Reserved.'
+ME_COPYRIGHT='Copyright (c) 2018-2019, Doug Bird. All Rights Reserved.'
 ME_NAME='tests.sh'
-ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR:-.}; ME_DIR=${ME_DIR#/}/; ME_DIR=$(cd "$ME_DIR"; pwd)
 
 #
 # paths
 #
-APP_DIR=$ME_DIR
+ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR:-.}; ME_DIR=${ME_DIR#/}/; ME_DIR=$(cd "$ME_DIR"; pwd)
+APP_DIR=$ME_DIR/../
 APP_DIR_REALPATH=$(cd "$APP_DIR"; pwd)
 HTML_ROOT=$ME_DIR/web
 DOC_ROOT=$ME_DIR/docs
