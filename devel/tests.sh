@@ -10,13 +10,12 @@ ME_NAME='tests.sh'
 #
 # paths
 #
-ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR:-.}; ME_DIR=${ME_DIR#/}/; ME_DIR=$(cd "$ME_DIR"; pwd)
-APP_DIR=$ME_DIR/../
+[ -n "$APP_DIR" ] || { ME_DIR="/$0"; ME_DIR=${ME_DIR%/*}; ME_DIR=${ME_DIR:-.}; ME_DIR=${ME_DIR#/}/; ME_DIR=$(cd "$ME_DIR"; pwd); APP_DIR=$(cd $ME_DIR/../; pwd); }
 APP_DIR_REALPATH=$(cd "$APP_DIR"; pwd)
-HTML_ROOT=$ME_DIR/web
-DOC_ROOT=$ME_DIR/docs
-PHPUNIT_BIN=$ME_DIR/vendor/bin/phpunit
-PHPUNIT_TESTS_ROOT=$ME_DIR/tests
+HTML_ROOT=$APP_DIR/web
+DOC_ROOT=$APP_DIR/docs
+PHPUNIT_BIN=$APP_DIR/vendor/bin/phpunit
+PHPUNIT_TESTS_ROOT=$APP_DIR/tests
 HTML_COVERAGE_ROOT_PREFIX=$DOC_ROOT/coverage
 HTML_COVERAGE_SYMLINK_PREFIX=$HTML_ROOT/.coverage
 
@@ -53,6 +52,7 @@ while getopts :?qhua-: arg; do { case $arg in
       show-coverage) PRINT_COVERAGE=1;;
       coverage) PRINT_COVERAGE=1;;
       reformat-only|skip-tests) SKIP_TESTS=1; HTML_COVERAGE_REPORT=1; SKIP_COVERAGE_REPORT=1;;
+      '') break ;; # end option parsing
       *) >&2 echo "$ME_NAME: unrecognized long option --$OPTARG"; OPTION_STATUS=$ME_ERROR_USAGE;;
    esac ;; 
    *) >&2 echo "$ME_NAME: unrecognized option -$OPTARG"; OPTION_STATUS=$ME_ERROR_USAGE;;
