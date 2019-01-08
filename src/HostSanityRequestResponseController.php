@@ -1,21 +1,39 @@
 <?php
+
+/*
+ * This file is part of the Healthsvc package.
+ *
+ * (c) D. Bird <dougbird@katmore.com>, All Rights Reserved.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Healthsvc;
 
+/**
+ * HostSanityRequestResponseController class
+ *
+ * @author D. Bird <dougbird@katmore.com>
+ */
 class HostSanityRequestResponseController extends RequestResponseController {
-   
+
    /**
+    *
     * @var \Healthsvc\HostSanityConfig
     */
    private $config;
-   
+
    /**
+    *
     * @throws \Healthsvc\RequestMethodNotAllowedException
     */
    public function getRequest(): Request {
-      return new HostSanityRequest($this->requestMethod,$this->requestQuery,$this->requestBody,$this->contentType);
+      return new HostSanityRequest($this->requestMethod, $this->requestQuery, $this->requestBody, $this->contentType);
    }
-   
+
    /**
+    *
     * @throws \Healthsvc\RequestMethodNotAllowedException
     */
    public function getResponse(): Response {
@@ -27,32 +45,32 @@ class HostSanityRequestResponseController extends RequestResponseController {
          $this->config->getBinDir());
       return new HostSanityResponse($controller->getStatusData());
    }
-   
+
    public function printResponseBody(bool $send_headers=true, bool $pretty_format=false) : void {
       try {
          $response = $this->getResponse();
-         $response->printResponseBody($send_headers,$pretty_format);
+         $response->printResponseBody($send_headers, $pretty_format);
       } catch (ResponseException $e) {
-         $e->printResponseBody($send_headers,$pretty_format);
+         $e->printResponseBody($send_headers, $pretty_format);
       }
    }
-   
+
    private $requestMethod;
    private $requestQuery;
    private $requestBody;
    private $contentType;
-   
-   public function __construct(string $config_file=null,string $request_method=null,array $request_query=null,string $request_body=null,string $content_type=null) {
-      
+
+   public function __construct(string $config_file=null, string $request_method=null, array $request_query=null, string $request_body=null, string $content_type=null) {
+
       $this->requestMethod = $request_method;
       $this->requestQuery = $request_query;
       $this->requestBody = $request_body;
       $this->contentType = $content_type;
-      
+
       parent::__construct($config_file);
-      
+
       $this->config = new HostSanityConfig($this->getConfig());
-      
+
    }
-   
+
 }

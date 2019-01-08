@@ -23,28 +23,28 @@ RuntimeException | -                         | -
 
 ## \Healthsvc
 
-Name                                | Description               | -    
-------------------------------------|---------------------------|-------
-CommandErrorInfoItem                | -                         | -     
-CommandInfoItem                     | -                         | -     
-ConfigController                    | -                         | -     
-ErrorInfoItem                       | -                         | -     
-HostSanityBinDirNotExistException   | -                         | -     
-HostSanityConfig                    | -                         | -     
-HostSanityController                | -                         | -     
-HostSanityRequest                   | -                         | -     
-HostSanityRequestResponseController | -                         | -     
-HostSanityResponse                  | -                         | -     
-HostSanityStatusData                | -                         | -     
-InfoItem                            | -                         | -     
-Request                             | -                         | -     
-RequestMethodNotAllowedException    | -                         | -     
-RequestResponseController           | -                         | -     
-Response                            | -                         | -     
-ResponseDataInvalidException        | -                         | -     
-ResponseException                   | -                         | -     
-SerializableData                    | -                         | -     
-StatusData                          | -                         | -     
+Name                                | Description                               | -    
+------------------------------------|-------------------------------------------|-------
+CommandErrorInfoItem                | CommandErrorInfoItem class                | -     
+CommandInfoItem                     | CommandInfoItem class                     | -     
+ConfigController                    | ConfigController class                    | -     
+ErrorInfoItem                       | ErrorInfoItem class                       | -     
+HostSanityBinDirNotExistException   | HostSanityBinDirNotExistException class   | -     
+HostSanityConfig                    | HostSanityConfig class                    | -     
+HostSanityController                | HostSanityController class                | -     
+HostSanityRequest                   | HostSanityRequest class                   | -     
+HostSanityRequestResponseController | HostSanityRequestResponseController class | -     
+HostSanityResponse                  | HostSanityResponse class                  | -     
+HostSanityStatusData                | HostSanityStatusData class                | -     
+InfoItem                            | InfoItem class                            | -     
+Request                             | Request class                             | -     
+RequestMethodNotAllowedException    | RequestMethodNotAllowedException class    | -     
+RequestResponseController           | RequestResponseController class           | -     
+Response                            | Response class                            | -     
+ResponseDataInvalidException        | ResponseDataInvalidException class        | -     
+ResponseException                   | ResponseException class                   | -     
+SerializableData                    | SerializableData class                    | -     
+StatusData                          | StatusData class                          | -     
 
 # Interfaces
 
@@ -56,27 +56,27 @@ JsonSerializable | -
 
 ## \Healthsvc
 
-Name                                  | Description               
---------------------------------------|---------------------------
-BuildableExecExitStatusDataInterface  | -                         
-BuildableMessageDataInterface         | -                         
-BuildableResponseDataInterface        | -                         
-ConsumableExecExitStatusDataInterface | -                         
-ConsumableMessageDataInterface        | -                         
-ConsumableResponseDataInterface       | -                         
-ResponseBodyPrinterInterface          | -                         
-ResponseInterface                     | -                         
-StatusDataProviderInterface           | -                         
+Name                                  | Description                                     
+--------------------------------------|-------------------------------------------------
+BuildableExecExitStatusDataInterface  | BuildableExecExitStatusDataInterface interface  
+BuildableMessageDataInterface         | BuildableMessageDataInterface interface         
+BuildableResponseDataInterface        | BuildableResponseDataInterface interface        
+ConsumableExecExitStatusDataInterface | ConsumableExecExitStatusDataInterface interface 
+ConsumableMessageDataInterface        | ConsumableMessageDataInterface interface        
+ConsumableResponseDataInterface       | ConsumableResponseDataInterface interface       
+ResponseBodyPrinterInterface          | ResponseBodyPrinterInterface interface          
+ResponseInterface                     | ResponseInterface interface                     
+StatusDataProviderInterface           | StatusDataProviderInterface interface           
 
 # Traits
 
 ## \Healthsvc
 
-Name                            | Description               
---------------------------------|---------------------------
-ConfigFileReaderTrait           | -                         
-RequestBodyParserTrait          | -                         
-ResponseDataRefreshMessageTrait | -                         
+Name                            | Description                           
+--------------------------------|---------------------------------------
+ConfigFileReaderTrait           | ConfigFileReaderTrait trait           
+RequestBodyParserTrait          | RequestBodyParserTrait trait          
+ResponseDataRefreshMessageTrait | ResponseDataRefreshMessageTrait trait 
 
 # Healthsvc\ConfigFileReaderTrait::setConfigFile
 
@@ -109,7 +109,9 @@ ResponseDataRefreshMessageTrait | -
 
 # Healthsvc\RequestBodyParserTrait
 
-#### 
+#### RequestBodyParserTrait trait
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -196,7 +198,9 @@ trait RequestBodyParserTrait {
 
 # Healthsvc\ResponseDataRefreshMessageTrait
 
-#### 
+#### ResponseDataRefreshMessageTrait trait
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -239,7 +243,9 @@ trait ResponseDataRefreshMessageTrait {
 
 # Healthsvc\ConfigFileReaderTrait
 
-#### 
+#### ConfigFileReaderTrait trait
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -276,7 +282,9 @@ trait ConfigFileReaderTrait {
 
 # Healthsvc\HostSanityRequestResponseController
 
-#### 
+#### HostSanityRequestResponseController class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -347,7 +355,9 @@ class HostSanityRequestResponseController extends RequestResponseController {
 
 # Healthsvc\Response
 
-#### 
+#### Response class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -415,7 +425,9 @@ JSON_CONTENT_TYPE | 'application/json'
 
 # Healthsvc\ResponseDataInvalidException
 
-#### 
+#### ResponseDataInvalidException class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -584,7 +596,9 @@ The exception message
 
 # Healthsvc\HostSanityConfig
 
-#### 
+#### HostSanityConfig class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -634,7 +648,9 @@ DEFAULT_BIN_DIR | __DIR__ . '/../bin/host-sanity'
 
 # Healthsvc\RequestResponseController
 
-#### 
+#### RequestResponseController class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -678,7 +694,9 @@ class RequestResponseController implements ResponseBodyPrinterInterface {
 
 # Healthsvc\ConfigController
 
-#### 
+#### ConfigController class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -707,7 +725,9 @@ class ConfigController {
 
 # Healthsvc\CommandInfoItem
 
-#### 
+#### CommandInfoItem class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -774,7 +794,9 @@ PROPERTIES_TO_SNAKE_CASE | true
 
 # Healthsvc\Request
 
-#### 
+#### Request class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -863,7 +885,9 @@ class Request {
 
 # Healthsvc\HostSanityBinDirNotExistException
 
-#### 
+#### HostSanityBinDirNotExistException class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -1000,7 +1024,9 @@ The exception message
 
 # Healthsvc\InfoItem
 
-#### 
+#### InfoItem class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -1095,19 +1121,6 @@ PROPERTIES_TO_SNAKE_CASE | true
 
 `public function getRequestQuery() `
 
-# Healthsvc\HostSanityStatusData::getHostname
-
-#### 
-
-## Signature
-
-`public function getHostname() `
-
-## Returns
-
-string
-    string reported hostname
-
 # Healthsvc\HostSanityStatusData::__construct
 
 #### 
@@ -1124,6 +1137,19 @@ string
     
 `$hostname` — string
     
+
+# Healthsvc\HostSanityStatusData::gethostname
+
+#### 
+
+## Signature
+
+`public function gethostname() `
+
+## Returns
+
+string
+    string reported hostname
 
 # Healthsvc\HostSanityConfig::getBinDir
 
@@ -1159,7 +1185,9 @@ string
 
 # Healthsvc\RequestMethodNotAllowedException
 
-#### 
+#### RequestMethodNotAllowedException class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -1299,7 +1327,9 @@ The exception message
 
 # Healthsvc\ErrorInfoItem
 
-#### 
+#### ErrorInfoItem class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -1505,7 +1535,9 @@ mixed
 
 # Healthsvc\HostSanityStatusData
 
-#### 
+#### HostSanityStatusData class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -1523,7 +1555,7 @@ class HostSanityStatusData extends StatusData {
   * protected $healthStatusTtl; 
 
   * // methods
-  * public string getHostname() 
+  * public string gethostname() 
   * public void __construct() 
 
   * // Inherited methods from StatusData
@@ -1592,7 +1624,7 @@ PROPERTIES_TO_SNAKE_CASE | true
 #### public
 
   * __construct()
-  * getHostname()
+  * gethostname()
 
 ### Inherited from Healthsvc\StatusData
 
@@ -1640,7 +1672,9 @@ PROPERTIES_TO_SNAKE_CASE | true
 
 # Healthsvc\SerializableData
 
-#### 
+#### SerializableData class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -2012,6 +2046,8 @@ int
 
 #### Moves a test from "failure" status to "warn" status.
 
+<b>bool</b> <i>false</i> if the test was already in "warn" status or did not exist
+
 ## Signature
 
 `public function moveHealthFailureToWarn(string $test_label ) `
@@ -2025,7 +2061,6 @@ int
 
 bool
     <i>true</i> if the test was moved from "failure" to "warn" status,  
-<b>bool</b> <i>false</i> if the test was already in "warn" status or did not exist
 
 ## Defined by Interface
 
@@ -2227,7 +2262,9 @@ void
 
 # Healthsvc\ResponseException
 
-#### 
+#### ResponseException class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -2362,7 +2399,9 @@ The exception message
 
 # Healthsvc\HostSanityResponse
 
-#### 
+#### HostSanityResponse class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -2654,7 +2693,9 @@ mixed
 
 # Healthsvc\HostSanityRequest
 
-#### 
+#### HostSanityRequest class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -2720,7 +2761,9 @@ ALLOWED_METHODS | -
 
 # Healthsvc\StatusData
 
-#### 
+#### StatusData class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -2914,7 +2957,9 @@ HostSanityStatusData
 
 # Healthsvc\HostSanityController
 
-#### 
+#### HostSanityController class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3029,7 +3074,9 @@ The exception message
 
 # Healthsvc\CommandErrorInfoItem
 
-#### 
+#### CommandErrorInfoItem class
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3268,7 +3315,9 @@ string
 
 # Healthsvc\StatusDataProviderInterface
 
-#### 
+#### StatusDataProviderInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3467,7 +3516,9 @@ mixed
 
 # Healthsvc\ConsumableMessageDataInterface
 
-#### 
+#### ConsumableMessageDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3486,7 +3537,9 @@ interface ConsumableMessageDataInterface {
 
 # Healthsvc\BuildableExecExitStatusDataInterface
 
-#### 
+#### BuildableExecExitStatusDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3505,7 +3558,9 @@ interface BuildableExecExitStatusDataInterface {
 
 # Healthsvc\ConsumableResponseDataInterface
 
-#### 
+#### ConsumableResponseDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3567,7 +3622,9 @@ interface ConsumableResponseDataInterface {
 
 # Healthsvc\BuildableMessageDataInterface
 
-#### 
+#### BuildableMessageDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3586,7 +3643,9 @@ interface BuildableMessageDataInterface {
 
 # Healthsvc\BuildableResponseDataInterface
 
-#### 
+#### BuildableResponseDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3742,7 +3801,9 @@ interface BuildableResponseDataInterface {
 
 # Healthsvc\ConsumableExecExitStatusDataInterface
 
-#### 
+#### ConsumableExecExitStatusDataInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3793,7 +3854,9 @@ interface JsonSerializable {
 
 # Healthsvc\ResponseInterface
 
-#### 
+#### ResponseInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
@@ -3831,7 +3894,9 @@ interface ResponseInterface extends ResponseBodyPrinterInterface {
 
 # Healthsvc\ResponseBodyPrinterInterface
 
-#### 
+#### ResponseBodyPrinterInterface interface
+
+  * Author: D. Bird <dougbird@katmore.com>
 
 ## Synopsis
 
