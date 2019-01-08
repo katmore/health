@@ -26,12 +26,30 @@ It can be used stand-alone or be integrated into existing projects. It is intend
     bin/host-sanity-config.php --bin free-space free-space-check /tmp
     ```
 
- * Start the built-in PHP webserver using the `webservice` command-line utility (for development usage only)
-    ```sh
-    bin/webservice
-    ```
+ * Configure endpoint for use with HTTP server:
+     * **Dev use only** 
+        * start the [`webservice`](./bin/webservice) command-line utility
+        ```sh
+        bin/webservice
+        ```
+        
+     * **Production or Dev**
+        * create a symlink to [`healthsvc/web`](./web) dir in existing http root
+        ```sh
+        ln -s /var/www/healthsvc/web /var/www/html/healthsvc
+        ```
+        * **--OR--**
+        * use the [`healthsvc/web`](./web) dir as the http root:
+        ```ini
+        # nginx example
+        server {
+        ...
+            root   /var/www/healthsvc/web;
+        ...
+        }
+        ```
 
- * Test the `web/host-sanity.php` webservice endpoint
+ * Test the [`web/host-sanity.php`](./web/host-sanity.php) webservice endpoint
    * For example, using `curl` command-line utility
      ```sh
      curl http://localhost:8000/host-sanity.php
