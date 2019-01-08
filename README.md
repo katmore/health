@@ -1,6 +1,4 @@
 # Healthsvc
-health webservice
-
 Healthsvc is a system health status service with a RESTful API interface.
 It can be used stand-alone or be integrated into existing projects. It is intended to be used conjunction with devops workflows, functional testing, monitoring software, etc.
 
