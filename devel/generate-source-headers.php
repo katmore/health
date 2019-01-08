@@ -4,7 +4,7 @@
  * adds file and class docblocks to a PHP source file
  */
 new class() {
-   const ME_NAME = 'prepend-dockblock-header.php';
+   const ME_NAME = 'generate-source-headers.php';
    const ME_USAGE = <<<USAGE
    [--help]|[<...OPTIONS>] <PATH>
    --quiet [<...OPTIONS>] <PATH>
@@ -99,18 +99,25 @@ HEADER;
        * replace tilde with $HOME in <PATH>
        */
       ! empty($_SERVER['HOME']) && $phpFile = preg_replace('/^~/', $_SERVER['HOME'], $phpFile);
-      
-      /*
-       * 
-       */
-      try {
-         $this->generateSourceHeaderFile($phpFile);
-      } catch ( InvalidArgumentException $e ) {
-         if ($e->getCode() === static::INVALID_PHP_FILE_EXCEPTION_CODE) {
-            $this->printLine("invalid <PATH>: " . $e->getMessage(), static::PRINT_LINE_ALWAYS | static::PRINT_LINE_ERROR);
-            return $this->exitStatus = 2;
+      if (is_dir($phpFile)) {
+         
+         if (!$total = $this->generateSourceHeaderDirectory($phpFile)) {
+            $this->printLine("<PATH> did not contain any .php files that could be processed", static::PRINT_LINE_ALWAYS | static::PRINT_LINE_ERROR);
+         } else {
+            $this->printLine("processed $total files");
          }
-         throw $e;
+         
+         
+      } else {
+         try {
+            $this->generateSourceHeaderFile($phpFile);
+         } catch ( InvalidArgumentException $e ) {
+            if ($e->getCode() === static::INVALID_PHP_FILE_EXCEPTION_CODE) {
+               $this->printLine("invalid <PATH>: " . $e->getMessage(), static::PRINT_LINE_ALWAYS | static::PRINT_LINE_ERROR);
+               return $this->exitStatus = 2;
+            }
+            throw $e;
+         }
       }
       
    }
@@ -119,13 +126,29 @@ HEADER;
    
    const INVALID_PHP_FILE_EXCEPTION_CODE = 702999;
    
+   private function generateSourceHeaderDirectory(string $dir,int $total=0) : int {
+      $dirFile = array_diff(scandir($dir), ['..', '.']);
+      array_walk($dirFile,function(string $basename) use(&$dir,&$total) {
+         $path = "$dir/$basename";
+         if (is_dir($path)) {
+            $total = $this->generateSourceHeaderDirectory($path,$total);
+         } else
+            if (is_file($path) && pathinfo($path,PATHINFO_EXTENSION)==='php') {
+               $this->generateSourceHeaderFile($path);
+               $total++;
+            }
+         
+      });
+         return $total;
+   }
+   
    private function generateSourceHeaderFile(string $php_file) {
       /*
        * check php_file exists
        */
       if (! is_file($php_file)) {
          throw new InvalidArgumentException(
-            "path not found ($php_file)",
+            "not a file ($php_file)",
             static::INVALID_PHP_FILE_EXCEPTION_CODE);
       }
       
@@ -140,7 +163,8 @@ HEADER;
       
       $topCommentStop = $topCommentStart = null;
       $token = token_get_all(file_get_contents($php_file));
-      $line = file($php_file);
+      $line = file($php_file,FILE_IGNORE_NEW_LINES);
+      
       array_walk($token,function($tdata) use(&$topCommentStart,&$topCommentStop) {
          
          if ($topCommentStart===null) {
@@ -175,6 +199,7 @@ HEADER;
             }
          }
       });
+      
       if ($startLine==null) {
          array_walk($token,function($tdata) use(&$startLine) {
             if ($startLine===null) {
@@ -184,6 +209,8 @@ HEADER;
             }
          });
       }
+      
+      
       
       $fileTop = array_slice($line,0,$startLine-1);
       $fileBot = array_slice($line,$startLine-1);
@@ -196,6 +223,34 @@ HEADER;
       $line = array_merge($line,$fileBot);
       
       
+      
+      $newPhpFile = dirname(dirname($php_file))."/.".basename(dirname($php_file))."/.".basename($php_file);
+      if (!is_dir(dirname($newPhpFile))) {
+         if (!mkdir(dirname($newPhpFile),0770,true)) {
+            throw new RuntimeException("failed to create temp dir: ".dirname($newPhpFile),static::GENERATE_FAILURE_EXCEPTION_CODE);
+         }
+      }
+      $backupFile = dirname(dirname($php_file))."/.".basename(dirname($php_file))."/.".pathinfo($php_file,PATHINFO_FILENAME)."-".md5_file($php_file)."-BACKUP.php";
+      if (!file_exists($backupFile)) {
+         if (!copy($php_file,$backupFile)) {
+            throw new RuntimeException("failed to create backup file: $backupFile",static::GENERATE_FAILURE_EXCEPTION_CODE);
+         }
+      }
+      if (file_exists($newPhpFile)) {
+         if (!unlink($newPhpFile)) {
+            throw new RuntimeException("failed to remove existing temp file: $newPhpFile",static::GENERATE_FAILURE_EXCEPTION_CODE);
+         }
+      }
+      if (false===file_put_contents($newPhpFile,implode("\n",$line))) {
+         throw new RuntimeException("failed to write to temp file: $newPhpFile",static::GENERATE_FAILURE_EXCEPTION_CODE);
+      }
+      if (!unlink($php_file)) {
+         throw new RuntimeException("failed to remove existing file: $php_file",static::GENERATE_FAILURE_EXCEPTION_CODE);
+      }
+      
+      if (!copy($newPhpFile,$php_file)) {
+         throw new RuntimeException("failed to create file: $php_file",static::GENERATE_FAILURE_EXCEPTION_CODE);
+      }
    }
    
    
